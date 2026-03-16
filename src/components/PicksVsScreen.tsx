@@ -101,7 +101,7 @@ function PickCard({
           style={{ backgroundImage: `url(${project.retinaImageURL || project.imageURL})` }}
         />
       ) : (
-        <div className="picks-card-image-fallback">🎓</div>
+        <div className="picks-card-image-fallback">🏫</div>
       )}
       <div className="picks-card-gradient" />
       <div className="picks-card-content">

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import type { Project } from '../types'
 import EssayDrawer from './EssayDrawer'
+import ProjectImage from './ProjectImage'
 
 interface Props {
   project: Project
@@ -53,15 +54,12 @@ export default function RouletteResultCard({
 
       <div className="result-card">
         <div className="result-image-wrap">
-          {project.imageURL ? (
-            <img
-              src={project.retinaImageURL || project.imageURL}
-              alt={project.title}
-              loading="lazy"
-            />
-          ) : (
-            <div className="result-image-fallback">🎓</div>
-          )}
+          <ProjectImage
+            src={project.retinaImageURL || project.imageURL}
+            alt={project.title}
+            fallbackClassName="result-image-fallback"
+            loading="lazy"
+          />
         </div>
 
         <div className="result-meta">
