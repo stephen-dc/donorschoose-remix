@@ -19,7 +19,7 @@ export async function fetchProjects(params: SearchParams): Promise<Project[]> {
   const query = new URLSearchParams({
     APIKey: API_KEY,
     max: '50',
-    showSynopsis: '2',
+    showSynopsis: 'true',
     state: params.state,
   })
 
@@ -35,7 +35,7 @@ export async function fetchProjects(params: SearchParams): Promise<Project[]> {
   return (data.proposals || []).map((p: any): Project => ({
     id: p.id,
     title: decodeHtml(p.title || ''),
-    shortDescription: decodeHtml(p.shortDescription || p.synopsis || ''),
+    shortDescription: decodeHtml(p.shortDescription || ''),
     imageURL: p.imageURL || '',
     retinaImageURL: p.retinaImageURL || p.imageURL || '',
     thumbImageURL: p.thumbImageURL || p.imageURL || '',
@@ -51,6 +51,6 @@ export async function fetchProjects(params: SearchParams): Promise<Project[]> {
     numStudents: parseInt(p.numStudents) || 0,
     proposalURL: p.proposalURL || '',
     fundingStatus: p.fundingStatus || '',
-    essay: decodeHtml(p.essay || ''),
+    essay: decodeHtml(p.synopsis || ''),
   }))
 }
