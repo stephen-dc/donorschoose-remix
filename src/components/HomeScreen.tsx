@@ -39,7 +39,7 @@ export default function HomeScreen() {
       <header className="home-header">
         <div className="home-logo">🍎</div>
         <h1 className="home-title">DonorsChoose Remix</h1>
-        <p className="home-subtitle">Weird alternate frontends for a good cause</p>
+        <p className="home-subtitle">Good ideas, bad ideas, and everything in between</p>
       </header>
 
       <main className="home-grid">
