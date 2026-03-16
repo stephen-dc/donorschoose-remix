@@ -1,5 +1,6 @@
 import type { Project } from '../types'
 import { buildCartUrl } from '../utils/cartUrl'
+import ProjectImage from './ProjectImage'
 
 interface Props {
   projects: Project[]
@@ -48,16 +49,13 @@ export default function PicksResultsScreen({
             <div key={project.id} className="picks-result-row">
               <span className="picks-result-rank">{rank}</span>
 
-              {project.thumbImageURL || project.imageURL ? (
-                <img
-                  src={project.thumbImageURL || project.imageURL}
-                  alt={project.title}
-                  className="picks-result-img"
-                  loading="lazy"
-                />
-              ) : (
-                <div className="picks-result-img-fallback">🎓</div>
-              )}
+              <ProjectImage
+                src={project.thumbImageURL || project.imageURL}
+                alt={project.title}
+                className="picks-result-img"
+                fallbackClassName="picks-result-img-fallback"
+                loading="lazy"
+              />
 
               <div className="picks-result-info">
                 <p className="picks-result-title">{project.title}</p>

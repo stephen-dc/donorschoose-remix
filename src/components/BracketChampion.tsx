@@ -1,4 +1,5 @@
 import type { Project } from '../types'
+import ProjectImage from './ProjectImage'
 import '../styles/bracket.css'
 
 interface Props {
@@ -26,15 +27,12 @@ export default function BracketChampion({ project, budget, onFund, onPlayAgain, 
       </div>
 
       <div className="bracket-champion-card">
-        {project.imageURL ? (
-          <img
-            src={project.retinaImageURL || project.imageURL}
-            alt={project.title}
-            className="bracket-champion-img"
-          />
-        ) : (
-          <div className="bracket-champion-img-fallback">🎓</div>
-        )}
+        <ProjectImage
+          src={project.retinaImageURL || project.imageURL}
+          alt={project.title}
+          className="bracket-champion-img"
+          fallbackClassName="bracket-champion-img-fallback"
+        />
         <div className="bracket-champion-info">
           {project.subject && (
             <span className="picks-card-subject" style={{ fontSize: '0.7rem' }}>{project.subject}</span>
