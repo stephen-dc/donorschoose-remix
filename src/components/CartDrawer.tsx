@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import type { Project } from '../types'
 import { buildCartUrl } from '../utils/cartUrl'
+import ProjectImage from './ProjectImage'
 
 interface Props {
   cart: Project[]
@@ -60,18 +61,11 @@ export default function CartDrawer({ cart, amounts, budget, onAmountChange, onRe
                     aria-label={`Remove ${project.title}`}
                   >✕</button>
                 )}
-                {project.thumbImageURL || project.imageURL ? (
-                  <img
-                    src={project.thumbImageURL || project.imageURL}
-                    alt={project.title}
-                    className="cart-item-img"
-                    onError={e => {
-                      (e.target as HTMLImageElement).style.display = 'none'
-                    }}
-                  />
-                ) : (
-                  <div className="cart-item-img">🏫</div>
-                )}
+                <ProjectImage
+                  src={project.thumbImageURL || project.imageURL}
+                  alt={project.title}
+                  className="cart-item-img"
+                />
                 <div className="cart-item-info">
                   <div className="cart-item-title">{project.title}</div>
                   <div className="cart-item-school">{project.schoolName}</div>
