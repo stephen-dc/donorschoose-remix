@@ -7,8 +7,7 @@ interface FeedCardProps {
   isActive: boolean
   isInCart: boolean
   onToggleCart: () => void
-  cartCount: number
-  onOpenCart: () => void
+  onReadEssay: () => void
 }
 
 interface HeartParticle {
@@ -19,7 +18,7 @@ interface HeartParticle {
 }
 
 const FeedCard = React.forwardRef<HTMLDivElement, FeedCardProps>(
-  ({ project, isActive, isInCart, onToggleCart, cartCount, onOpenCart }, ref) => {
+  ({ project, isActive, isInCart, onToggleCart, onReadEssay }, ref) => {
     const [hearts, setHearts] = useState<HeartParticle[]>([])
     const heartIdRef = useRef(0)
 
@@ -105,13 +104,10 @@ const FeedCard = React.forwardRef<HTMLDivElement, FeedCardProps>(
             </div>
           </div>
 
-          {/* Cart button */}
-          <button className="feed-cart-btn" onClick={onOpenCart} aria-label="Open cart">
-            <span>🛒</span>
-            <span className="feed-cart-label">Cart</span>
-            {cartCount > 0 && (
-              <span className="feed-cart-badge">{cartCount}</span>
-            )}
+          {/* Essay button */}
+          <button className="feed-essay-btn" onClick={onReadEssay} aria-label="Read essay">
+            <span>📖</span>
+            <span className="feed-heart-label">Essay</span>
           </button>
         </div>
 
