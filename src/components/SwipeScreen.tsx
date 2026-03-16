@@ -1,6 +1,8 @@
-import { useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import type { Project } from '../types'
 import SwipeCard from './SwipeCard'
+import EssayDrawer from './EssayDrawer'
 
 interface Props {
   projects: Project[]
@@ -25,6 +27,8 @@ export default function SwipeScreen({
   onBack,
   onHome,
 }: Props) {
+  const [essayProject, setEssayProject] = useState<Project | null>(null)
+
   const handleSwipe = useCallback((direction: 'left' | 'right') => {
     if (direction === 'left') onSwipeLeft()
     else onSwipeRight()
@@ -45,6 +49,7 @@ export default function SwipeScreen({
 
   // The visible cards: show up to 3 from currentIndex
   const visibleProjects = projects.slice(currentIndex, currentIndex + 3)
+  const topProject = visibleProjects[0] ?? null
 
   return (
     <div className="swipe-screen">
@@ -122,6 +127,14 @@ export default function SwipeScreen({
             ✕
           </button>
           <button
+            className="action-btn info-action"
+            onClick={() => setEssayProject(topProject)}
+            aria-label="Read more"
+            disabled={!topProject}
+          >
+            ℹ
+          </button>
+          <button
             className="action-btn like"
             onClick={onSwipeRight}
             aria-label="Add to cart"
@@ -130,6 +143,15 @@ export default function SwipeScreen({
           </button>
         </div>
       )}
+
+      <AnimatePresence>
+        {essayProject && (
+          <EssayDrawer
+            project={essayProject}
+            onClose={() => setEssayProject(null)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   )
 }

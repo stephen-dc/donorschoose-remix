@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import type { Project } from '../types'
+import EssayDrawer from './EssayDrawer'
 
 interface Props {
   pair: [Project, Project]
@@ -11,6 +13,7 @@ interface Props {
 
 export default function PicksVsScreen({ pair, round, budget, onPick, onHome }: Props) {
   const [pickedId, setPickedId] = useState<string | null>(null)
+  const [essayProject, setEssayProject] = useState<Project | null>(null)
   const [left, right] = pair
   const pct = (round / budget) * 100
 
@@ -49,14 +52,25 @@ export default function PicksVsScreen({ pair, round, budget, onPick, onHome }: P
           project={left}
           picked={pickedId === left.id}
           onPick={() => handlePick(left)}
+          onInfo={e => { e.stopPropagation(); setEssayProject(left) }}
         />
         <div className="picks-vs-divider">VS</div>
         <PickCard
           project={right}
           picked={pickedId === right.id}
           onPick={() => handlePick(right)}
+          onInfo={e => { e.stopPropagation(); setEssayProject(right) }}
         />
       </div>
+
+      <AnimatePresence>
+        {essayProject && (
+          <EssayDrawer
+            project={essayProject}
+            onClose={() => setEssayProject(null)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   )
 }
@@ -65,10 +79,12 @@ function PickCard({
   project,
   picked,
   onPick,
+  onInfo,
 }: {
   project: Project
   picked: boolean
   onPick: () => void
+  onInfo: (e: React.MouseEvent) => void
 }) {
   return (
     <div
@@ -95,6 +111,13 @@ function PickCard({
         <p className="picks-card-title">{project.title}</p>
         <p className="picks-card-location">📍 {project.city}, {project.state}</p>
       </div>
+      <button
+        className="info-btn picks-card-info-btn"
+        onClick={onInfo}
+        aria-label="Read teacher essay"
+      >
+        ℹ
+      </button>
     </div>
   )
 }
