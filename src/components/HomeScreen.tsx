@@ -38,7 +38,7 @@ export default function HomeScreen() {
     <div className="home-screen">
       <header className="home-header">
         <div className="home-logo">🍎</div>
-        <h1 className="home-title">DonorsChoose</h1>
+        <h1 className="home-title">DonorsChoose Remix</h1>
         <p className="home-subtitle">Weird alternate frontends for a good cause</p>
       </header>
 
