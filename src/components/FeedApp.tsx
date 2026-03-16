@@ -103,12 +103,9 @@ export default function FeedApp() {
           projects={projects}
           cart={cart}
           cartCount={cart.length}
-          locationLabel={locationLabel}
           onToggleCart={handleToggleCart}
           onOpenCart={() => setCartOpen(true)}
           onBack={handleBack}
-          onHome={() => navigate('/')}
-          onCheckout={handleCheckout}
         />
       )}
 

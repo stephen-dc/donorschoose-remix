@@ -1,17 +1,16 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import type { Project } from '../types'
 import FeedCard from './FeedCard'
+import EssayDrawer from './EssayDrawer'
 
 interface FeedScreenProps {
   projects: Project[]
   cart: Project[]
   cartCount: number
-  locationLabel: string
   onToggleCart: (project: Project) => void
   onOpenCart: () => void
   onBack: () => void
-  onHome: () => void
-  onCheckout: () => void
 }
 
 export default function FeedScreen({
@@ -21,10 +20,9 @@ export default function FeedScreen({
   onToggleCart,
   onOpenCart,
   onBack,
-  onHome,
-  onCheckout,
 }: FeedScreenProps) {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [essayProject, setEssayProject] = useState<Project | null>(null)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
 
@@ -63,13 +61,10 @@ export default function FeedScreen({
         <span className="feed-progress">
           {activeIndex + 1} / {projects.length}
         </span>
-        {cartCount > 0 ? (
-          <button className="feed-checkout-btn" onClick={onCheckout}>
-            Checkout ({cartCount})
-          </button>
-        ) : (
-          <button className="feed-back-btn" onClick={onHome}>🏠 Home</button>
-        )}
+        <button className="cart-btn feed-topnav-cart" onClick={onOpenCart} aria-label="Open cart">
+          🛒
+          {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+        </button>
       </nav>
 
       {/* Scroll-snap container */}
@@ -82,11 +77,18 @@ export default function FeedScreen({
             isActive={activeIndex === i}
             isInCart={cartIds.has(project.id)}
             onToggleCart={() => onToggleCart(project)}
-            cartCount={cartCount}
-            onOpenCart={onOpenCart}
+            onReadEssay={() => setEssayProject(project)}
           />
         ))}
       </div>
+      <AnimatePresence>
+        {essayProject && (
+          <EssayDrawer
+            project={essayProject}
+            onClose={() => setEssayProject(null)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   )
 }
