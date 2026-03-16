@@ -17,6 +17,7 @@ export default function TinderApp() {
   const [projects, setProjects] = useState<Project[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [cart, setCart] = useState<Project[]>([])
+  const [amounts, setAmounts] = useState<Record<string, number>>({})
   const [cartOpen, setCartOpen] = useState(false)
   const [locationLabel, setLocationLabel] = useState('')
   const [loading, setLoading] = useState(false)
@@ -34,6 +35,7 @@ export default function TinderApp() {
       setProjects(results)
       setCurrentIndex(0)
       setCart([])
+      setAmounts({})
       setLocationLabel(params.city ? `${params.city}, ${params.state}` : params.state)
       setScreen('swipe')
     } catch (e) {
@@ -52,6 +54,7 @@ export default function TinderApp() {
       const project = prev[currentIndex]
       if (project) {
         setCart(c => c.find(p => p.id === project.id) ? c : [...c, project])
+        setAmounts(a => ({ ...a, [project.id]: a[project.id] ?? project.costToComplete }))
       }
       return prev
     })
@@ -73,6 +76,7 @@ export default function TinderApp() {
     setProjects([])
     setCurrentIndex(0)
     setCart([])
+    setAmounts({})
     setCartOpen(false)
     setLocationLabel('')
   }, [])
@@ -104,6 +108,7 @@ export default function TinderApp() {
       {screen === 'checkout' && (
         <CheckoutScreen
           cart={cart}
+          amounts={amounts}
           onReset={handleReset}
         />
       )}
@@ -112,6 +117,8 @@ export default function TinderApp() {
         {cartOpen && (
           <CartDrawer
             cart={cart}
+            amounts={amounts}
+            onAmountChange={(id, val) => setAmounts(a => ({ ...a, [id]: val }))}
             onClose={() => setCartOpen(false)}
             onCheckout={handleCheckout}
           />
