@@ -1,4 +1,7 @@
+import { useState } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import type { Project } from '../types'
+import EssayDrawer from './EssayDrawer'
 
 interface Props {
   project: Project
@@ -22,6 +25,7 @@ export default function RouletteResultCard({
   onHome,
 }: Props) {
   const pct = Math.min(100, Math.round(project.percentFunded))
+  const [essayOpen, setEssayOpen] = useState(false)
 
   return (
     <div className="roulette-result-screen">
@@ -90,13 +94,14 @@ export default function RouletteResultCard({
           </div>
         </div>
 
+        {project.shortDescription && (
+          <p className="result-description">{project.shortDescription}</p>
+        )}
+
         {(project.essay?.trim() || project.shortDescription) && (
-          <div className="result-description">
-            {(project.essay?.trim() || project.shortDescription)
-              .split(/\n+/)
-              .map((para, i) => <p key={i} style={{ margin: '0 0 0.7rem' }}>{para}</p>)
-            }
-          </div>
+          <button className="result-essay-btn" onClick={() => setEssayOpen(true)}>
+            📖 Read teacher's essay
+          </button>
         )}
       </div>
 
@@ -108,6 +113,15 @@ export default function RouletteResultCard({
           🎰 Spin Again
         </button>
       </div>
+
+      <AnimatePresence>
+        {essayOpen && (
+          <EssayDrawer
+            project={project}
+            onClose={() => setEssayOpen(false)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   )
 }
