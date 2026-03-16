@@ -591,10 +591,41 @@ body {
   margin-bottom: 0.2rem;
 }
 
-.cart-item-cost {
-  font-size: 0.75rem;
-  color: #fd267a;
+.cart-item-amount {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.3rem;
+}
+
+.cart-item-amount-prefix {
+  font-size: 0.8rem;
   font-weight: 700;
+  color: #fd267a;
+}
+
+.cart-item-amount-input {
+  width: 64px;
+  padding: 0.2rem 0.35rem;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(253,38,122,0.5);
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+.cart-item-amount-input:focus {
+  outline: none;
+  border-color: #fd267a;
+  background: rgba(255,255,255,0.15);
+}
+
+.cart-item-amount-max {
+  font-size: 0.7rem;
+  opacity: 0.5;
+  white-space: nowrap;
 }
 
 .cart-footer {

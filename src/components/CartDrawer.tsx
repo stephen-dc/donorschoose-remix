@@ -3,12 +3,14 @@ import type { Project } from '../types'
 
 interface Props {
   cart: Project[]
+  amounts: Record<string, number>
+  onAmountChange: (id: string, amount: number) => void
   onClose: () => void
   onCheckout: () => void
 }
 
-export default function CartDrawer({ cart, onClose, onCheckout }: Props) {
-  const total = cart.reduce((sum, p) => sum + p.costToComplete, 0)
+export default function CartDrawer({ cart, amounts, onAmountChange, onClose, onCheckout }: Props) {
+  const total = cart.reduce((sum, p) => sum + (amounts[p.id] ?? p.costToComplete), 0)
 
   return (
     <motion.div
@@ -56,8 +58,17 @@ export default function CartDrawer({ cart, onClose, onCheckout }: Props) {
                 <div className="cart-item-info">
                   <div className="cart-item-title">{project.title}</div>
                   <div className="cart-item-school">{project.schoolName}</div>
-                  <div className="cart-item-cost">
-                    ${project.costToComplete.toLocaleString()} to fully fund
+                  <div className="cart-item-amount">
+                    <span className="cart-item-amount-prefix">$</span>
+                    <input
+                      type="number"
+                      className="cart-item-amount-input"
+                      min={1}
+                      max={project.costToComplete}
+                      value={amounts[project.id] ?? project.costToComplete}
+                      onChange={e => onAmountChange(project.id, Math.max(1, Number(e.target.value)))}
+                    />
+                    <span className="cart-item-amount-max">of ${project.costToComplete.toLocaleString()}</span>
                   </div>
                 </div>
               </div>
