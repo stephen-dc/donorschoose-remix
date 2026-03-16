@@ -3,14 +3,15 @@ import { buildCartUrl } from '../utils/cartUrl'
 
 interface Props {
   cart: Project[]
+  amounts: Record<string, number>
   onReset: () => void
 }
 
-export default function CheckoutScreen({ cart, onReset }: Props) {
-  const total = cart.reduce((sum, p) => sum + p.costToComplete, 0)
+export default function CheckoutScreen({ cart, amounts, onReset }: Props) {
+  const total = cart.reduce((sum, p) => sum + (amounts[p.id] ?? p.costToComplete), 0)
 
   const cartUrl = buildCartUrl(
-    cart.map(p => ({ proposalId: p.id, amount: p.costToComplete }))
+    cart.map(p => ({ proposalId: p.id, amount: amounts[p.id] ?? p.costToComplete }))
   )
 
   return (
@@ -42,7 +43,7 @@ export default function CheckoutScreen({ cart, onReset }: Props) {
               <p>{project.city}, {project.state}</p>
             </div>
             <div className="checkout-item-cost">
-              ${project.costToComplete.toLocaleString()}
+              ${(amounts[project.id] ?? project.costToComplete).toLocaleString()}
             </div>
           </div>
         ))}

@@ -19,6 +19,7 @@ export default function RouletteApp() {
   const [wheelProjects, setWheelProjects] = useState<Project[]>([])
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [cart, setCart] = useState<Project[]>([])
+  const [amounts, setAmounts] = useState<Record<string, number>>({})
   const [cartOpen, setCartOpen] = useState(false)
   const [locationLabel, setLocationLabel] = useState('')
   const [loading, setLoading] = useState(false)
@@ -51,6 +52,7 @@ export default function RouletteApp() {
   const handleFund = useCallback(() => {
     if (selectedProject) {
       setCart(c => c.find(p => p.id === selectedProject.id) ? c : [...c, selectedProject])
+      setAmounts(a => ({ ...a, [selectedProject.id]: a[selectedProject.id] ?? selectedProject.costToComplete }))
     }
     setScreen('wheel')
   }, [selectedProject])
@@ -69,6 +71,7 @@ export default function RouletteApp() {
     setWheelProjects([])
     setSelectedProject(null)
     setCart([])
+    setAmounts({})
     setCartOpen(false)
     setLocationLabel('')
   }, [])
@@ -120,6 +123,7 @@ export default function RouletteApp() {
       {screen === 'checkout' && (
         <CheckoutScreen
           cart={cart}
+          amounts={amounts}
           onReset={handleReset}
         />
       )}
@@ -128,6 +132,8 @@ export default function RouletteApp() {
         {cartOpen && (
           <CartDrawer
             cart={cart}
+            amounts={amounts}
+            onAmountChange={(id, val) => setAmounts(a => ({ ...a, [id]: val }))}
             onClose={() => setCartOpen(false)}
             onCheckout={handleCheckout}
           />
