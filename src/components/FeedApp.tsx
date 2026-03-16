@@ -6,6 +6,7 @@ import type { Project } from '../types'
 import SearchScreen from './SearchScreen'
 import FeedScreen from './FeedScreen'
 import CartDrawer from './CartDrawer'
+import { buildCartUrl } from '../utils/cartUrl'
 import '../styles/app.css'
 import '../styles/feed.css'
 
@@ -86,6 +87,7 @@ export default function FeedApp() {
           projects={projects}
           cart={cart}
           cartCount={cart.length}
+          cartUrl={buildCartUrl(cart.map(p => ({ proposalId: p.id, amount: amounts[p.id] ?? p.costToComplete })))}
           onToggleCart={handleToggleCart}
           onOpenCart={() => setCartOpen(true)}
           onBack={handleBack}

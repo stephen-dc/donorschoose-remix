@@ -348,3 +348,84 @@
   min-width: 2.5rem;
   text-align: right;
 }
+
+/* ── End-of-list Card ─────────────────────────────────────────────────── */
+.feed-end-card {
+  flex-shrink: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #0f0f1a 0%, #1a1a2e 60%, #0d1b2a 100%);
+  position: relative;
+}
+
+.feed-end-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  gap: 1rem;
+  max-width: 320px;
+}
+
+.feed-end-emoji {
+  font-size: 4rem;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.feed-end-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+}
+
+.feed-end-subtitle {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.feed-end-donate-btn {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  background: linear-gradient(135deg, #06b6d4, #a3e635);
+  color: #0f0f1a;
+  font-size: 1rem;
+  font-weight: 800;
+  border-radius: 50px;
+  text-decoration: none;
+  text-align: center;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.feed-end-donate-btn:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.feed-end-back-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.875rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.feed-end-back-btn:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.9);
+}
