@@ -20,7 +20,6 @@ export default function FeedApp() {
   const [amounts, setAmounts] = useState<Record<string, number>>({})
   const [budget, setBudget] = useState<number | null>(null)
   const [cartOpen, setCartOpen] = useState(false)
-  const [locationLabel, setLocationLabel] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -37,7 +36,6 @@ export default function FeedApp() {
       setCart([])
       setAmounts({})
       setBudget(params.budget ?? null)
-      setLocationLabel(params.city ? `${params.city}, ${params.state}` : params.state)
       setScreen('feed')
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Failed to fetch projects. Please try again.')
@@ -72,7 +70,6 @@ export default function FeedApp() {
     setAmounts({})
     setBudget(null)
     setCartOpen(false)
-    setLocationLabel('')
   }, [])
 
   useEffect(() => {
