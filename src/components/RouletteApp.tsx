@@ -123,6 +123,7 @@ export default function RouletteApp() {
         <RouletteResultCard
           project={selectedProject}
           cartCount={cart.length}
+          donationAmount={budget != null ? Math.floor(budget / (cart.length + 1)) : undefined}
           onFund={handleFund}
           onSpinAgain={handleSpinAgain}
           onBack={() => setScreen('wheel')}
