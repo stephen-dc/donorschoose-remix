@@ -11,7 +11,13 @@
       "Bash(npm install)",
       "Bash(npm install framer-motion)",
       "Bash(/Users/stephen/code/dc-tinder/.env:*)",
-      "Bash(/Users/stephen/code/dc-tinder/.env.example:*)"
+      "Bash(/Users/stephen/code/dc-tinder/.env.example:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(npx tsc:*)",
+      "Bash(wc -l /Users/stephen/code/donorschoose-remix/src/styles/*.css)",
+      "Bash(npm list:*)"
     ]
   }
 }
