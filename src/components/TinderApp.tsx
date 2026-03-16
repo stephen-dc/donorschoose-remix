@@ -99,6 +99,7 @@ export default function TinderApp() {
           loading={loading}
           error={error}
           showBudget
+          onHome={() => navigate('/')}
         />
       )}
 
