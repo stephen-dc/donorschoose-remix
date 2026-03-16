@@ -108,6 +108,7 @@ export default function TinderApp() {
             amounts={amounts}
             budget={budget}
             onAmountChange={(id, val) => setAmounts(a => ({ ...a, [id]: val }))}
+            onRemove={id => setCart(c => c.filter(p => p.id !== id))}
             onClose={() => setCartOpen(false)}
           />
         )}
