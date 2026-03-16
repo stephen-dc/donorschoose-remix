@@ -37,24 +37,26 @@ export default function EssayDrawer({ project, onClose }: Props) {
           <button className="essay-close" onClick={onClose} aria-label="Close">✕</button>
         </div>
 
-        <div className="essay-body">
-          {body
-            ? body.split(/\n+/).map((para, i) => (
-                <p key={i} className="essay-paragraph">{para}</p>
-              ))
-            : <p className="essay-empty">No essay available for this project.</p>
-          }
-        </div>
+        <div className="essay-scroll-area">
+          <div className="essay-body">
+            {body
+              ? body.split(/\n+/).map((para, i) => (
+                  <p key={i} className="essay-paragraph">{para}</p>
+                ))
+              : <p className="essay-empty">No essay available for this project.</p>
+            }
+          </div>
 
-        <div className="essay-footer">
-          <a
-            href={project.proposalURL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="essay-link-btn"
-          >
-            See full project on DonorsChoose →
-          </a>
+          <div className="essay-footer">
+            <a
+              href={project.proposalURL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="essay-link-btn"
+            >
+              See full project on DonorsChoose →
+            </a>
+          </div>
         </div>
       </motion.div>
     </motion.div>
