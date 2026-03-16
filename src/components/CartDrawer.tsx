@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import type { Project } from '../types'
+import { buildCartUrl } from '../utils/cartUrl'
 
 interface Props {
   cart: Project[]
@@ -7,11 +8,13 @@ interface Props {
   budget?: number | null
   onAmountChange: (id: string, amount: number) => void
   onClose: () => void
-  onCheckout: () => void
 }
 
-export default function CartDrawer({ cart, amounts, budget, onAmountChange, onClose, onCheckout }: Props) {
+export default function CartDrawer({ cart, amounts, budget, onAmountChange, onClose }: Props) {
   const total = cart.reduce((sum, p) => sum + (amounts[p.id] ?? p.costToComplete), 0)
+  const cartUrl = buildCartUrl(
+    cart.map(p => ({ proposalId: p.id, amount: amounts[p.id] ?? p.costToComplete }))
+  )
 
   return (
     <motion.div
@@ -87,13 +90,13 @@ export default function CartDrawer({ cart, amounts, budget, onAmountChange, onCl
             <span>{budget != null ? 'Total donation' : 'Total to fully fund all'}</span>
             <strong>${total.toLocaleString()}</strong>
           </div>
-          <button
+          <a
             className="checkout-btn"
-            onClick={onCheckout}
-            disabled={cart.length === 0}
+            href={cart.length > 0 ? cartUrl : undefined}
+            style={{ pointerEvents: cart.length === 0 ? 'none' : 'auto', opacity: cart.length === 0 ? 0.5 : 1 }}
           >
             Donate to {cart.length} Project{cart.length !== 1 ? 's' : ''} →
-          </button>
+          </a>
         </div>
       </motion.div>
     </motion.div>

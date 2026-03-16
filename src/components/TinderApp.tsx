@@ -6,10 +6,9 @@ import type { Project } from '../types'
 import SearchScreen from './SearchScreen'
 import SwipeScreen from './SwipeScreen'
 import CartDrawer from './CartDrawer'
-import CheckoutScreen from './CheckoutScreen'
 import '../styles/app.css'
 
-type Screen = 'search' | 'swipe' | 'checkout'
+type Screen = 'search' | 'swipe'
 
 export default function TinderApp() {
   const navigate = useNavigate()
@@ -68,21 +67,6 @@ export default function TinderApp() {
     setCartOpen(false)
   }, [])
 
-  const handleCheckout = useCallback(() => {
-    setCartOpen(false)
-    setScreen('checkout')
-  }, [])
-
-  const handleReset = useCallback(() => {
-    setScreen('search')
-    setProjects([])
-    setCurrentIndex(0)
-    setCart([])
-    setAmounts({})
-    setBudget(null)
-    setCartOpen(false)
-    setLocationLabel('')
-  }, [])
 
   useEffect(() => {
     if (budget !== null && cart.length > 0) {
@@ -117,14 +101,6 @@ export default function TinderApp() {
         />
       )}
 
-      {screen === 'checkout' && (
-        <CheckoutScreen
-          cart={cart}
-          amounts={amounts}
-          onReset={handleReset}
-        />
-      )}
-
       <AnimatePresence>
         {cartOpen && (
           <CartDrawer
@@ -133,7 +109,6 @@ export default function TinderApp() {
             budget={budget}
             onAmountChange={(id, val) => setAmounts(a => ({ ...a, [id]: val }))}
             onClose={() => setCartOpen(false)}
-            onCheckout={handleCheckout}
           />
         )}
       </AnimatePresence>
