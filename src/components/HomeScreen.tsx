@@ -38,6 +38,15 @@ const APPS = [
     path: '/bracket',
     gradient: 'linear-gradient(135deg, #f59e0b 0%, #b45309 100%)',
   },
+  {
+    id: 'feed',
+    emoji: '📱',
+    title: 'DC Feed',
+    tagline: 'Scroll your way to impact',
+    description: 'TikTok-style vertical feed. Scroll through classroom projects, heart the ones you love, checkout in seconds.',
+    path: '/feed',
+    gradient: 'linear-gradient(135deg, #06b6d4 0%, #a3e635 100%)',
+  },
 ]
 
 export default function HomeScreen() {
