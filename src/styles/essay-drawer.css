@@ -19,7 +19,6 @@
   border-radius: 20px 20px 0 0;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 .essay-handle-bar {
@@ -77,12 +76,15 @@
   margin-top: 0.1rem;
 }
 
-.essay-body {
+.essay-scroll-area {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  padding: 1rem 1.25rem;
   -webkit-overflow-scrolling: touch;
+}
+
+.essay-body {
+  padding: 1rem 1.25rem;
 }
 
 .essay-paragraph {
@@ -105,7 +107,6 @@
 
 .essay-footer {
   padding: 0.875rem 1.25rem 1.25rem;
-  flex-shrink: 0;
   border-top: 1px solid rgba(255,255,255,0.07);
 }
 
