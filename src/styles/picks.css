@@ -224,6 +224,17 @@
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
 }
 
+/* Info button overlaid on picks/bracket cards */
+.picks-card-info-btn {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  z-index: 10;
+  width: 28px;
+  height: 28px;
+  font-size: 0.7rem;
+}
+
 /* VS divider badge */
 .picks-vs-divider {
   position: absolute;
