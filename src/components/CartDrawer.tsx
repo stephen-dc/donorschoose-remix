@@ -7,10 +7,11 @@ interface Props {
   amounts: Record<string, number>
   budget?: number | null
   onAmountChange: (id: string, amount: number) => void
+  onRemove?: (id: string) => void
   onClose: () => void
 }
 
-export default function CartDrawer({ cart, amounts, budget, onAmountChange, onClose }: Props) {
+export default function CartDrawer({ cart, amounts, budget, onAmountChange, onRemove, onClose }: Props) {
   const total = cart.reduce((sum, p) => sum + (amounts[p.id] ?? p.costToComplete), 0)
   const cartUrl = buildCartUrl(
     cart.map(p => ({ proposalId: p.id, amount: amounts[p.id] ?? p.costToComplete }))
@@ -52,6 +53,13 @@ export default function CartDrawer({ cart, amounts, budget, onAmountChange, onCl
             )}
             {cart.map(project => (
               <div key={project.id} className="cart-item">
+                {onRemove && (
+                  <button
+                    className="cart-item-remove"
+                    onClick={() => onRemove(project.id)}
+                    aria-label={`Remove ${project.title}`}
+                  >✕</button>
+                )}
                 {project.thumbImageURL || project.imageURL ? (
                   <img
                     src={project.thumbImageURL || project.imageURL}
