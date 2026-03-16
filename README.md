@@ -13,6 +13,7 @@ Alternate frontends for [DonorsChoose](https://www.donorschoose.org/) — a coll
 | `/tinder` | **DC Tinder** | Browse projects like a dating app. Swipe right to fund, left to skip. |
 | `/roulette` | **DC Roulette** | Spin the wheel and let fate pick a classroom for you. |
 | `/picks` | **DC Picks** | Set a budget, then vote dollar-by-dollar between competing projects. |
+| `/bracket` | **DC Bracket** | 8 classrooms compete in a March Madness-style tournament. The champion gets your full budget. |
 
 ---
 
