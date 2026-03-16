@@ -29,6 +29,15 @@ const APPS = [
     path: '/picks',
     gradient: 'linear-gradient(135deg, #059669 0%, #0891b2 100%)',
   },
+  {
+    id: 'bracket',
+    emoji: '🥊',
+    title: 'DC Bracket',
+    tagline: 'May the best classroom win',
+    description: '8 classrooms enter. Only one gets funded. Vote in head-to-head matchups until a champion emerges.',
+    path: '/bracket',
+    gradient: 'linear-gradient(135deg, #f59e0b 0%, #b45309 100%)',
+  },
 ]
 
 export default function HomeScreen() {
