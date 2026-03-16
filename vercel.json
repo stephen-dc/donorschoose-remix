@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "https://api.donorschoose.org/:path*" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ]
+}

@@ -1,0 +1,460 @@
+/* ── DC Picks — Search Screen Override ───────────────────── */
+
+.search-screen--picks {
+  background: linear-gradient(135deg, #059669 0%, #0891b2 100%);
+}
+
+.search-screen--picks .search-btn {
+  color: #059669;
+}
+
+.search-screen--picks .search-form select option {
+  background: #059669;
+}
+
+/* ── Budget Presets ───────────────────────────────────────── */
+
+.budget-presets-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.budget-presets {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.budget-preset-btn {
+  padding: 0.75rem 0.25rem;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.budget-preset-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.budget-preset-btn.selected {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.9);
+  transform: scale(1.04);
+}
+
+/* ── VS Screen ────────────────────────────────────────────── */
+
+.picks-vs-screen {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #0f0f1a;
+  overflow: hidden;
+}
+
+.picks-vs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem 0.5rem;
+  padding-top: max(1rem, env(safe-area-inset-top));
+  flex-shrink: 0;
+}
+
+.picks-vs-header .back-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 0.25rem;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.picks-vs-header .back-btn:hover {
+  opacity: 1;
+}
+
+.picks-round-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  opacity: 0.7;
+  text-align: center;
+  flex: 1;
+  padding: 0 0.5rem;
+}
+
+/* Progress bar under header */
+.picks-progress-wrap {
+  padding: 0 1.25rem 0.5rem;
+  flex-shrink: 0;
+}
+
+.picks-progress-track {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.picks-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #059669, #0891b2);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* ── Arena (the two cards) ────────────────────────────────── */
+
+.picks-vs-arena {
+  flex: 1;
+  display: flex;
+  gap: 0.625rem;
+  padding: 0 0.75rem 0.75rem;
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  overflow: hidden;
+  position: relative;
+}
+
+.picks-project-card {
+  flex: 1;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.picks-project-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.65);
+}
+
+.picks-project-card:active {
+  transform: scale(0.97);
+}
+
+.picks-project-card.picked {
+  /* brief win flash */
+  animation: picks-win-flash 0.25s ease-out forwards;
+}
+
+@keyframes picks-win-flash {
+  0%   { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  40%  { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0.55); }
+  100% { box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.0); }
+}
+
+.picks-card-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-color: #2a2a3e;
+}
+
+.picks-card-image-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  background: linear-gradient(135deg, #1a2a1e, #0a1a2a);
+}
+
+.picks-card-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 20%,
+    rgba(0, 0, 0, 0.4) 45%,
+    rgba(0, 0, 0, 0.92) 100%
+  );
+}
+
+.picks-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.875rem 0.75rem;
+}
+
+.picks-card-subject {
+  display: inline-block;
+  background: rgba(5, 150, 105, 0.9);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.2rem 0.5rem;
+  border-radius: 20px;
+  margin-bottom: 0.35rem;
+}
+
+.picks-card-title {
+  font-size: 0.875rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 0.25rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 1px 2px rgba(0, 0, 0, 1);
+  color: #fff;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.picks-card-location {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.75);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+
+/* VS divider badge */
+.picks-vs-divider {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  color: #0f0f1a;
+  font-size: 0.75rem;
+  font-weight: 900;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: 10;
+  letter-spacing: 0.03em;
+  flex-shrink: 0;
+}
+
+/* ── Results Screen ───────────────────────────────────────── */
+
+.picks-results-screen {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #0f0f1a;
+  overflow: hidden;
+}
+
+.picks-results-hero {
+  background: linear-gradient(135deg, #059669 0%, #0891b2 100%);
+  padding: 1.5rem 1.25rem 1.25rem;
+  padding-top: max(1.5rem, env(safe-area-inset-top));
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.picks-results-hero .emoji {
+  font-size: 2.5rem;
+  margin-bottom: 0.4rem;
+  line-height: 1;
+}
+
+.picks-results-hero h1 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0 0 0.3rem;
+}
+
+.picks-results-hero p {
+  font-size: 0.85rem;
+  opacity: 0.85;
+  margin: 0;
+}
+
+.picks-results-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.picks-result-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  padding: 0.75rem;
+}
+
+.picks-result-rank {
+  font-size: 1.25rem;
+  width: 28px;
+  flex-shrink: 0;
+  text-align: center;
+  line-height: 1;
+}
+
+.picks-result-img {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: #2a2a3e;
+  flex-shrink: 0;
+}
+
+.picks-result-img-fallback {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  background: #2a2a3e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.picks-result-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.picks-result-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.picks-result-location {
+  font-size: 0.72rem;
+  opacity: 0.55;
+  margin-top: 0.2rem;
+}
+
+.picks-result-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.picks-result-badge {
+  background: linear-gradient(135deg, #059669, #0891b2);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.3rem 0.65rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.picks-donate-link {
+  display: block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 50px;
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  color: #10b981;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.picks-donate-link:hover {
+  background: rgba(16, 185, 129, 0.15);
+}
+
+/* ── Results Footer ───────────────────────────────────────── */
+
+.picks-results-footer {
+  padding: 0.75rem 1rem;
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  flex-shrink: 0;
+}
+
+.picks-donate-all-btn {
+  display: block;
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(135deg, #059669, #0891b2);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  letter-spacing: 0.3px;
+  box-sizing: border-box;
+}
+
+.picks-donate-all-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(5, 150, 105, 0.4);
+}
+
+.picks-footer-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.picks-play-again-btn {
+  flex: 1;
+  padding: 0.875rem;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(135deg, #059669, #0891b2);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  letter-spacing: 0.3px;
+}
+
+.picks-play-again-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(5, 150, 105, 0.4);
+}
+
+.picks-home-btn {
+  padding: 0.875rem 1.25rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.picks-home-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
