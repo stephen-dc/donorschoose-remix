@@ -84,7 +84,7 @@ export default function RouletteWheel({
             radiusLineColor="rgba(255,255,255,0.1)"
             radiusLineWidth={1}
             fontSize={13}
-            spinDuration={0.8}
+            spinDuration={0.4}
             disableInitialAnimation={true}
             onStopSpinning={handleStopSpinning}
           />
