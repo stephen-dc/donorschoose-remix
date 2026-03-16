@@ -12,6 +12,7 @@ function decodeHtml(str: string): string {
 export interface SearchParams {
   city?: string
   state: string
+  budget?: number
 }
 
 export async function fetchProjects(params: SearchParams): Promise<Project[]> {
