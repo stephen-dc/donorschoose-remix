@@ -4,6 +4,7 @@ import TinderApp from './components/TinderApp'
 import RouletteApp from './components/RouletteApp'
 import PicksApp from './components/PicksApp'
 import BracketApp from './components/BracketApp'
+import FeedApp from './components/FeedApp'
 
 export default function RouterRoot() {
   return (
@@ -14,6 +15,7 @@ export default function RouterRoot() {
         <Route path="/roulette" element={<RouletteApp />} />
         <Route path="/picks" element={<PicksApp />} />
         <Route path="/bracket" element={<BracketApp />} />
+        <Route path="/feed" element={<FeedApp />} />
       </Routes>
     </BrowserRouter>
   )
