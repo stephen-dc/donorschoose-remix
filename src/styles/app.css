@@ -117,6 +117,44 @@ body {
   color: #fff;
 }
 
+.budget-presets {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.budget-preset-btn {
+  padding: 0.6rem 0;
+  border-radius: 10px;
+  border: 2px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.budget-preset-btn:hover {
+  background: rgba(255,255,255,0.22);
+}
+
+.budget-preset-btn.selected {
+  background: rgba(253,38,122,0.35);
+  border-color: rgba(253,38,122,0.9);
+  transform: scale(1.04);
+}
+
+.cart-budget-context {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fd267a;
+  opacity: 0.85;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.3px;
+}
+
 .search-btn {
   width: 100%;
   padding: 1rem;

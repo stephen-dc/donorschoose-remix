@@ -4,12 +4,13 @@ import type { Project } from '../types'
 interface Props {
   cart: Project[]
   amounts: Record<string, number>
+  budget?: number | null
   onAmountChange: (id: string, amount: number) => void
   onClose: () => void
   onCheckout: () => void
 }
 
-export default function CartDrawer({ cart, amounts, onAmountChange, onClose, onCheckout }: Props) {
+export default function CartDrawer({ cart, amounts, budget, onAmountChange, onClose, onCheckout }: Props) {
   const total = cart.reduce((sum, p) => sum + (amounts[p.id] ?? p.costToComplete), 0)
 
   return (
@@ -41,6 +42,11 @@ export default function CartDrawer({ cart, amounts, onAmountChange, onClose, onC
           </div>
         ) : (
           <div className="cart-items">
+            {budget != null && cart.length > 0 && (
+              <div className="cart-budget-context">
+                ${budget} budget · ${Math.floor(budget / cart.length)} each
+              </div>
+            )}
             {cart.map(project => (
               <div key={project.id} className="cart-item">
                 {project.thumbImageURL || project.imageURL ? (
@@ -78,7 +84,7 @@ export default function CartDrawer({ cart, amounts, onAmountChange, onClose, onC
 
         <div className="cart-footer">
           <div className="cart-total">
-            <span>Total to fully fund all</span>
+            <span>{budget != null ? 'Total donation' : 'Total to fully fund all'}</span>
             <strong>${total.toLocaleString()}</strong>
           </div>
           <button

@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { fetchProjects, type SearchParams } from '../api'
@@ -18,6 +18,7 @@ export default function TinderApp() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [cart, setCart] = useState<Project[]>([])
   const [amounts, setAmounts] = useState<Record<string, number>>({})
+  const [budget, setBudget] = useState<number | null>(null)
   const [cartOpen, setCartOpen] = useState(false)
   const [locationLabel, setLocationLabel] = useState('')
   const [loading, setLoading] = useState(false)
@@ -36,6 +37,7 @@ export default function TinderApp() {
       setCurrentIndex(0)
       setCart([])
       setAmounts({})
+      setBudget(params.budget ?? null)
       setLocationLabel(params.city ? `${params.city}, ${params.state}` : params.state)
       setScreen('swipe')
     } catch (e) {
@@ -77,9 +79,17 @@ export default function TinderApp() {
     setCurrentIndex(0)
     setCart([])
     setAmounts({})
+    setBudget(null)
     setCartOpen(false)
     setLocationLabel('')
   }, [])
+
+  useEffect(() => {
+    if (budget !== null && cart.length > 0) {
+      const share = Math.floor(budget / cart.length)
+      setAmounts(Object.fromEntries(cart.map(p => [p.id, share])))
+    }
+  }, [cart, budget])
 
   return (
     <>
@@ -88,6 +98,7 @@ export default function TinderApp() {
           onSearch={handleSearch}
           loading={loading}
           error={error}
+          showBudget
         />
       )}
 
@@ -118,6 +129,7 @@ export default function TinderApp() {
           <CartDrawer
             cart={cart}
             amounts={amounts}
+            budget={budget}
             onAmountChange={(id, val) => setAmounts(a => ({ ...a, [id]: val }))}
             onClose={() => setCartOpen(false)}
             onCheckout={handleCheckout}
