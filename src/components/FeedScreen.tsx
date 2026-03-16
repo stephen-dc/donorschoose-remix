@@ -8,6 +8,7 @@ interface FeedScreenProps {
   projects: Project[]
   cart: Project[]
   cartCount: number
+  cartUrl: string
   onToggleCart: (project: Project) => void
   onOpenCart: () => void
   onBack: () => void
@@ -17,6 +18,7 @@ export default function FeedScreen({
   projects,
   cart,
   cartCount,
+  cartUrl,
   onToggleCart,
   onOpenCart,
   onBack,
@@ -60,6 +62,7 @@ export default function FeedScreen({
         <button className="feed-back-btn" onClick={onBack}>← Back</button>
         <span className="feed-progress">
           {activeIndex + 1} / {projects.length}
+          {activeIndex === projects.length - 1 && ' · End'}
         </span>
         <button className="cart-btn feed-topnav-cart" onClick={onOpenCart} aria-label="Open cart">
           🛒
@@ -80,6 +83,27 @@ export default function FeedScreen({
             onReadEssay={() => setEssayProject(project)}
           />
         ))}
+
+        {/* End-of-list card */}
+        <div className="feed-end-card">
+          <div className="feed-end-inner">
+            <div className="feed-end-emoji">🎉</div>
+            <h2 className="feed-end-title">You've seen them all!</h2>
+            <p className="feed-end-subtitle">
+              {cartCount > 0
+                ? `You've picked ${cartCount} project${cartCount !== 1 ? 's' : ''}. Ready to donate?`
+                : 'Go back and heart the projects you want to support.'}
+            </p>
+            {cartCount > 0 && (
+              <a className="feed-end-donate-btn" href={cartUrl}>
+                Donate to {cartCount} Project{cartCount !== 1 ? 's' : ''} →
+              </a>
+            )}
+            <button className="feed-end-back-btn" onClick={onBack}>
+              ← Search another area
+            </button>
+          </div>
+        </div>
       </div>
       <AnimatePresence>
         {essayProject && (
