@@ -15,6 +15,7 @@ Alternate frontends for [DonorsChoose](https://www.donorschoose.org/) — a coll
 | `/picks` | **DC Picks** | Set a budget, then vote dollar-by-dollar between competing projects. |
 | `/bracket` | **DC Bracket** | 8 classrooms compete in a March Madness-style tournament. The champion gets your full budget. |
 | `/feed` | **DC Feed** | TikTok-style vertical feed. Scroll through classroom projects, heart the ones you love, checkout in seconds. |
+| `/versus` | **DC Versus** | Two classrooms face off. Pick the one you love — the winner stays and a new challenger steps up. |
 
 ---
 
