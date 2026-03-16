@@ -6,11 +6,10 @@ import type { Project } from '../types'
 import SearchScreen from './SearchScreen'
 import FeedScreen from './FeedScreen'
 import CartDrawer from './CartDrawer'
-import CheckoutScreen from './CheckoutScreen'
 import '../styles/app.css'
 import '../styles/feed.css'
 
-type Screen = 'search' | 'feed' | 'checkout'
+type Screen = 'search' | 'feed'
 
 export default function FeedApp() {
   const navigate = useNavigate()
@@ -58,19 +57,6 @@ export default function FeedApp() {
     setCartOpen(false)
   }, [])
 
-  const handleCheckout = useCallback(() => {
-    setCartOpen(false)
-    setScreen('checkout')
-  }, [])
-
-  const handleReset = useCallback(() => {
-    setScreen('search')
-    setProjects([])
-    setCart([])
-    setAmounts({})
-    setBudget(null)
-    setCartOpen(false)
-  }, [])
 
   useEffect(() => {
     if (budget !== null && cart.length > 0) {
@@ -106,14 +92,6 @@ export default function FeedApp() {
         />
       )}
 
-      {screen === 'checkout' && (
-        <CheckoutScreen
-          cart={cart}
-          amounts={amounts}
-          onReset={handleReset}
-        />
-      )}
-
       <AnimatePresence>
         {cartOpen && (
           <CartDrawer
@@ -122,7 +100,6 @@ export default function FeedApp() {
             budget={budget}
             onAmountChange={(id, val) => setAmounts(a => ({ ...a, [id]: val }))}
             onClose={() => setCartOpen(false)}
-            onCheckout={handleCheckout}
           />
         )}
       </AnimatePresence>

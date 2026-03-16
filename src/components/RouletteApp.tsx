@@ -5,13 +5,12 @@ import { fetchProjects, type SearchParams } from '../api'
 import type { Project } from '../types'
 import SearchScreen from './SearchScreen'
 import CartDrawer from './CartDrawer'
-import CheckoutScreen from './CheckoutScreen'
 import RouletteWheel from './RouletteWheel'
 import RouletteResultCard from './RouletteResultCard'
 import '../styles/app.css'
 import '../styles/roulette.css'
 
-type RouletteScreen = 'search' | 'wheel' | 'result' | 'checkout'
+type RouletteScreen = 'search' | 'wheel' | 'result'
 
 export default function RouletteApp() {
   const navigate = useNavigate()
@@ -63,21 +62,6 @@ export default function RouletteApp() {
     setScreen('wheel')
   }, [])
 
-  const handleCheckout = useCallback(() => {
-    setCartOpen(false)
-    setScreen('checkout')
-  }, [])
-
-  const handleReset = useCallback(() => {
-    setScreen('search')
-    setWheelProjects([])
-    setSelectedProject(null)
-    setCart([])
-    setAmounts({})
-    setBudget(null)
-    setCartOpen(false)
-    setLocationLabel('')
-  }, [])
 
   const handleBackToSearch = useCallback(() => {
     setScreen('search')
@@ -132,14 +116,6 @@ export default function RouletteApp() {
         />
       )}
 
-      {screen === 'checkout' && (
-        <CheckoutScreen
-          cart={cart}
-          amounts={amounts}
-          onReset={handleReset}
-        />
-      )}
-
       <AnimatePresence>
         {cartOpen && (
           <CartDrawer
@@ -148,7 +124,6 @@ export default function RouletteApp() {
             budget={budget}
             onAmountChange={(id, val) => setAmounts(a => ({ ...a, [id]: val }))}
             onClose={() => setCartOpen(false)}
-            onCheckout={handleCheckout}
           />
         )}
       </AnimatePresence>
