@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import type { SearchParams } from '../api'
 
+const BUDGET_AMOUNTS = [5, 10, 20, 50]
+
 const STATES = [
   ['AL', 'Alabama'], ['AK', 'Alaska'], ['AZ', 'Arizona'], ['AR', 'Arkansas'],
   ['CA', 'California'], ['CO', 'Colorado'], ['CT', 'Connecticut'], ['DE', 'Delaware'],
@@ -26,6 +28,7 @@ interface Props {
   emoji?: string
   accentClass?: string
   onHome?: () => void
+  showBudget?: boolean
 }
 
 export default function SearchScreen({
@@ -37,14 +40,16 @@ export default function SearchScreen({
   emoji = '🍎',
   accentClass,
   onHome,
+  showBudget = false,
 }: Props) {
   const [city, setCity] = useState('')
   const [state, setState] = useState('')
+  const [budget, setBudget] = useState(10)
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!state) return
-    onSearch({ city, state })
+    onSearch({ city, state, ...(showBudget ? { budget } : {}) })
   }
 
   return (
@@ -59,6 +64,23 @@ export default function SearchScreen({
       <p className="tagline">{tagline}</p>
 
       <form className="search-form" onSubmit={handleSubmit}>
+        {showBudget && (
+          <div>
+            <label>Budget</label>
+            <div className="budget-presets">
+              {BUDGET_AMOUNTS.map(amt => (
+                <button
+                  key={amt}
+                  type="button"
+                  className={`budget-preset-btn${budget === amt ? ' selected' : ''}`}
+                  onClick={() => setBudget(amt)}
+                >
+                  ${amt}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
         <div>
           <label htmlFor="city">City (optional)</label>
           <input
