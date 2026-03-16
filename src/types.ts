@@ -17,4 +17,5 @@ export interface Project {
   numStudents: number
   proposalURL: string
   fundingStatus: string
+  essay?: string
 }

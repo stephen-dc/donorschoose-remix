@@ -90,8 +90,13 @@ export default function RouletteResultCard({
           </div>
         </div>
 
-        {project.shortDescription && (
-          <p className="result-description">{project.shortDescription}</p>
+        {(project.essay?.trim() || project.shortDescription) && (
+          <div className="result-description">
+            {(project.essay?.trim() || project.shortDescription)
+              .split(/\n+/)
+              .map((para, i) => <p key={i} style={{ margin: '0 0 0.7rem' }}>{para}</p>)
+            }
+          </div>
         )}
       </div>
 

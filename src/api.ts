@@ -19,7 +19,7 @@ export async function fetchProjects(params: SearchParams): Promise<Project[]> {
   const query = new URLSearchParams({
     APIKey: API_KEY,
     max: '50',
-    showSynopsis: '1',
+    showSynopsis: '2',
     state: params.state,
   })
 
@@ -51,5 +51,6 @@ export async function fetchProjects(params: SearchParams): Promise<Project[]> {
     numStudents: parseInt(p.numStudents) || 0,
     proposalURL: p.proposalURL || '',
     fundingStatus: p.fundingStatus || '',
+    essay: decodeHtml(p.essay || ''),
   }))
 }

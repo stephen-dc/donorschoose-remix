@@ -498,6 +498,17 @@ body {
   font-size: 2rem;
 }
 
+.action-btn.info-action {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  font-size: 1rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  font-style: italic;
+  font-weight: 700;
+}
+
 /* ===== Empty State ===== */
 .empty-state {
   text-align: center;
