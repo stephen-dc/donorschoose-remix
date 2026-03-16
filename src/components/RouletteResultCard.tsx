@@ -3,6 +3,7 @@ import type { Project } from '../types'
 interface Props {
   project: Project
   cartCount: number
+  donationAmount?: number
   onFund: () => void
   onSpinAgain: () => void
   onBack: () => void
@@ -13,6 +14,7 @@ interface Props {
 export default function RouletteResultCard({
   project,
   cartCount,
+  donationAmount,
   onFund,
   onSpinAgain,
   onBack,
@@ -95,7 +97,7 @@ export default function RouletteResultCard({
 
       <div className="result-actions">
         <button className="fund-btn" onClick={onFund}>
-          💚 Fund This! (${project.costToComplete.toFixed(2)})
+          💚 Fund This! (${(donationAmount ?? project.costToComplete).toFixed(2)})
         </button>
         <button className="spin-again-btn" onClick={onSpinAgain}>
           🎰 Spin Again
