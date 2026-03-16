@@ -47,6 +47,15 @@ const APPS = [
     path: '/feed',
     gradient: 'linear-gradient(135deg, #06b6d4 0%, #a3e635 100%)',
   },
+  {
+    id: 'versus',
+    emoji: '⚡',
+    title: 'DC Versus',
+    tagline: 'Pick your favorite, one match at a time',
+    description: 'Two classrooms face off. Pick the one you love — the winner stays and a new challenger steps up.',
+    path: '/versus',
+    gradient: 'linear-gradient(135deg, #f59e0b 0%, #ef4444 100%)',
+  },
 ]
 
 export default function HomeScreen() {

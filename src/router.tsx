@@ -5,6 +5,7 @@ import RouletteApp from './components/RouletteApp'
 import PicksApp from './components/PicksApp'
 import BracketApp from './components/BracketApp'
 import FeedApp from './components/FeedApp'
+import VersusApp from './components/VersusApp'
 
 export default function RouterRoot() {
   return (
@@ -16,6 +17,7 @@ export default function RouterRoot() {
         <Route path="/picks" element={<PicksApp />} />
         <Route path="/bracket" element={<BracketApp />} />
         <Route path="/feed" element={<FeedApp />} />
+        <Route path="/versus" element={<VersusApp />} />
       </Routes>
     </BrowserRouter>
   )
