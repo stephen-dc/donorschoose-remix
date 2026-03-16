@@ -5,11 +5,11 @@ import type { Project } from '../types'
 import SearchScreen from './SearchScreen'
 import BracketMatchup from './BracketMatchup'
 import BracketChampion from './BracketChampion'
-import CheckoutScreen from './CheckoutScreen'
+import { buildCartUrl } from '../utils/cartUrl'
 import '../styles/app.css'
 import '../styles/bracket.css'
 
-type BracketScreen = 'search' | 'matchup' | 'champion' | 'checkout'
+type BracketScreen = 'search' | 'matchup' | 'champion'
 
 export default function BracketApp() {
   const navigate = useNavigate()
@@ -117,17 +117,14 @@ export default function BracketApp() {
         <BracketChampion
           project={champion}
           budget={budget}
-          onFund={() => setScreen('checkout')}
+          onFund={() => {
+            window.location.href = buildCartUrl([{
+              proposalId: champion.id,
+              amount: budget ?? champion.costToComplete,
+            }])
+          }}
           onPlayAgain={handleReset}
           onHome={() => navigate('/')}
-        />
-      )}
-
-      {screen === 'checkout' && champion && (
-        <CheckoutScreen
-          cart={[champion]}
-          amounts={{ [champion.id]: budget ?? champion.costToComplete }}
-          onReset={handleReset}
         />
       )}
     </>
