@@ -31,7 +31,7 @@ const APPS = [
   },
   {
     id: 'bracket',
-    emoji: '🥊',
+    emoji: '🏀',
     title: 'DC Bracket',
     tagline: 'May the best classroom win',
     description: '8 classrooms enter. Only one gets funded. Vote in head-to-head matchups until a champion emerges.',
