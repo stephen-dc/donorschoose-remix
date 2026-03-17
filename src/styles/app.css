@@ -961,8 +961,9 @@ body {
 .match-toast {
   position: fixed;
   top: max(1rem, env(safe-area-inset-top));
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   z-index: 300;
   width: min(400px, calc(100vw - 2rem));
   display: flex;
