@@ -56,6 +56,15 @@ const APPS = [
     path: '/versus',
     gradient: 'linear-gradient(135deg, #f59e0b 0%, #ef4444 100%)',
   },
+  {
+    id: 'quiz',
+    emoji: '🎯',
+    title: 'DC Quiz',
+    tagline: 'Find your perfect teacher',
+    description: 'Take a short, surprisingly fun quiz and get matched with a real teacher whose classroom needs your help.',
+    path: '/quiz',
+    gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+  },
 ]
 
 export default function HomeScreen() {
