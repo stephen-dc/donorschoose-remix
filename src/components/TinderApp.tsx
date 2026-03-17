@@ -6,6 +6,7 @@ import type { Project } from '../types'
 import SearchScreen from './SearchScreen'
 import SwipeScreen from './SwipeScreen'
 import CartDrawer from './CartDrawer'
+import MatchToast from './MatchToast'
 import '../styles/app.css'
 
 type Screen = 'search' | 'swipe'
@@ -20,6 +21,7 @@ export default function TinderApp() {
   const [budget, setBudget] = useState<number | null>(null)
   const [cartOpen, setCartOpen] = useState(false)
   const [locationLabel, setLocationLabel] = useState('')
+  const [lastMatch, setLastMatch] = useState<Project | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -51,16 +53,14 @@ export default function TinderApp() {
   }, [])
 
   const handleSwipeRight = useCallback(() => {
-    setProjects(prev => {
-      const project = prev[currentIndex]
-      if (project) {
-        setCart(c => c.find(p => p.id === project.id) ? c : [...c, project])
-        setAmounts(a => ({ ...a, [project.id]: a[project.id] ?? project.costToComplete }))
-      }
-      return prev
-    })
+    const project = projects[currentIndex]
+    if (project) {
+      setCart(c => c.find(p => p.id === project.id) ? c : [...c, project])
+      setAmounts(a => ({ ...a, [project.id]: a[project.id] ?? project.costToComplete }))
+      setLastMatch(project)
+    }
     setCurrentIndex(i => i + 1)
-  }, [currentIndex])
+  }, [currentIndex, projects])
 
   const handleBack = useCallback(() => {
     setScreen('search')
@@ -110,6 +110,16 @@ export default function TinderApp() {
             onAmountChange={(id, val) => setAmounts(a => ({ ...a, [id]: val }))}
             onRemove={id => setCart(c => c.filter(p => p.id !== id))}
             onClose={() => setCartOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {lastMatch && (
+          <MatchToast
+            key={lastMatch.id}
+            project={lastMatch}
+            onDismiss={() => setLastMatch(null)}
           />
         )}
       </AnimatePresence>
