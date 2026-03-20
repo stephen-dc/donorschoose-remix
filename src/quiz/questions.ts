@@ -79,28 +79,6 @@ function seemsSporty(profile: Partial<DonorProfile>): boolean {
         ));
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function _seemsArtsy(profile: Partial<DonorProfile>): boolean {
-    return hasHobby(profile, 'arts') || hasHobby(profile, 'crafts') ||
-        (Array.isArray(profile.hobbyDetails) && profile.hobbyDetails.some(
-            h => ['painting', 'photography', 'theater', 'pottery', 'sewing'].includes(h)
-        ));
-}
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function _seemsTechy(profile: Partial<DonorProfile>): boolean {
-    return hasHobby(profile, 'technology') ||
-        (Array.isArray(profile.hobbyDetails) && profile.hobbyDetails.some(
-            h => ['coding', 'robotics', 'gaming', 'ai-future'].includes(h)
-        ));
-}
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function _seemsOutdoorsy(profile: Partial<DonorProfile>): boolean {
-    return hasHobby(profile, 'gardening') || hasHobby(profile, 'animals') ||
-        profile.sceneryPreference === 'rural-farm' ||
-        profile.sceneryPreference === 'mountain-trail';
-}
 
 /**
  * All possible quiz questions. The engine selects and orders them
