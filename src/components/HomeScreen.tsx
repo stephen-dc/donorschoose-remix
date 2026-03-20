@@ -65,6 +65,15 @@ const APPS = [
     path: '/quiz',
     gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
   },
+  {
+    id: 'smells',
+    emoji: '🌸',
+    title: 'DC Smells Nice',
+    tagline: 'Only the finest-smelling classrooms',
+    description: 'Gardens, cooking labs, herb projects — if it smells nice, it\'s in. Browse only the fragrant side of DonorsChoose.',
+    path: '/smells',
+    gradient: 'linear-gradient(135deg, #f9a8d4 0%, #a78bfa 100%)',
+  },
 ]
 
 export default function HomeScreen() {

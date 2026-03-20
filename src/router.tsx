@@ -7,6 +7,7 @@ import BracketApp from './components/BracketApp'
 import FeedApp from './components/FeedApp'
 import VersusApp from './components/VersusApp'
 import QuizApp from './components/QuizApp'
+import SmellsApp from './components/SmellsApp'
 
 export default function RouterRoot() {
   return (
@@ -20,6 +21,7 @@ export default function RouterRoot() {
         <Route path="/feed" element={<FeedApp />} />
         <Route path="/versus" element={<VersusApp />} />
         <Route path="/quiz" element={<QuizApp />} />
+        <Route path="/smells" element={<SmellsApp />} />
       </Routes>
     </BrowserRouter>
   )
