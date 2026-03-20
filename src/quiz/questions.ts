@@ -80,7 +80,7 @@ function seemsSporty(profile: Partial<DonorProfile>): boolean {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function seemsArtsy(profile: Partial<DonorProfile>): boolean {
+function _seemsArtsy(profile: Partial<DonorProfile>): boolean {
     return hasHobby(profile, 'arts') || hasHobby(profile, 'crafts') ||
         (Array.isArray(profile.hobbyDetails) && profile.hobbyDetails.some(
             h => ['painting', 'photography', 'theater', 'pottery', 'sewing'].includes(h)
@@ -88,7 +88,7 @@ function seemsArtsy(profile: Partial<DonorProfile>): boolean {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function seemsTechy(profile: Partial<DonorProfile>): boolean {
+function _seemsTechy(profile: Partial<DonorProfile>): boolean {
     return hasHobby(profile, 'technology') ||
         (Array.isArray(profile.hobbyDetails) && profile.hobbyDetails.some(
             h => ['coding', 'robotics', 'gaming', 'ai-future'].includes(h)
@@ -96,7 +96,7 @@ function seemsTechy(profile: Partial<DonorProfile>): boolean {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-function seemsOutdoorsy(profile: Partial<DonorProfile>): boolean {
+function _seemsOutdoorsy(profile: Partial<DonorProfile>): boolean {
     return hasHobby(profile, 'gardening') || hasHobby(profile, 'animals') ||
         profile.sceneryPreference === 'rural-farm' ||
         profile.sceneryPreference === 'mountain-trail';
