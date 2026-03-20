@@ -17,6 +17,7 @@ Alternate frontends for [DonorsChoose](https://www.donorschoose.org/) — a coll
 | `/feed` | **DC Feed** | TikTok-style vertical feed. Scroll through classroom projects, heart the ones you love, checkout in seconds. |
 | `/versus` | **DC Versus** | Two classrooms face off. Pick the one you love — the winner stays and a new challenger steps up. |
 | `/quiz` | **DC Quiz** | Take a short adaptive quiz and get matched with a real teacher whose classroom needs your help. |
+| `/smells` | **DC Smells Nice** | Gardens, cooking labs, herb projects — only the fragrant side of DonorsChoose, with auto-assigned scent profiles. |
 
 ---
 

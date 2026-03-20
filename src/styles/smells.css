@@ -1,0 +1,308 @@
+/* ===== Search screen accent ===== */
+.search-screen--smells {
+  background: linear-gradient(135deg, #f9a8d4 0%, #a78bfa 100%);
+}
+
+/* ===== App shell ===== */
+.smells-app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fdf4ff;
+  color: #1a1a2e;
+  overflow: hidden;
+}
+
+/* ===== Header ===== */
+.smells-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  padding-top: max(0.75rem, env(safe-area-inset-top));
+  background: linear-gradient(135deg, #f9a8d4 0%, #a78bfa 100%);
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.smells-back-btn {
+  background: rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.smells-back-btn:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+.smells-header-title {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.smells-cart-btn {
+  background: rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  min-width: 2.5rem;
+}
+
+.smells-cart-btn.has-items {
+  background: rgba(255,255,255,0.4);
+}
+
+.smells-cart-btn:hover:not(:disabled) {
+  background: rgba(255,255,255,0.5);
+  transform: scale(1.05);
+}
+
+.smells-cart-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* ===== Scent key ===== */
+.smells-scent-key {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  overflow-x: auto;
+  background: #fdf4ff;
+  border-bottom: 1px solid #f0e0ff;
+  flex-shrink: 0;
+  scrollbar-width: none;
+}
+
+.smells-scent-key::-webkit-scrollbar {
+  display: none;
+}
+
+.smells-scent-key span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+  background: #f3e8ff;
+  color: #7c3aed;
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+}
+
+/* ===== Grid ===== */
+.smells-grid {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  align-content: start;
+  padding-bottom: 5rem;
+}
+
+/* ===== Card ===== */
+.smells-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(167, 139, 250, 0.12);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 2px solid transparent;
+}
+
+.smells-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(167, 139, 250, 0.22);
+}
+
+.smells-card.is-in-cart {
+  border-color: #a78bfa;
+}
+
+.smells-card-img-wrap {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #f3e8ff;
+  overflow: hidden;
+}
+
+.smells-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===== Scent badge ===== */
+.smells-scent-badge {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.55rem;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  white-space: nowrap;
+}
+
+.smells-scent-badge--floral {
+  background: rgba(249, 168, 212, 0.85);
+  color: #831843;
+}
+
+.smells-scent-badge--sweet---savory {
+  background: rgba(254, 215, 170, 0.9);
+  color: #92400e;
+}
+
+.smells-scent-badge--earthy {
+  background: rgba(167, 243, 208, 0.9);
+  color: #065f46;
+}
+
+.smells-scent-badge--crisp {
+  background: rgba(186, 230, 253, 0.9);
+  color: #0c4a6e;
+}
+
+.smells-scent-badge--fresh---clean {
+  background: rgba(233, 213, 255, 0.9);
+  color: #4c1d95;
+}
+
+/* ===== Card body ===== */
+.smells-card-body {
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.smells-card-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.smells-card-teacher {
+  font-size: 0.75rem;
+  color: #7c3aed;
+  font-weight: 500;
+}
+
+.smells-card-desc {
+  font-size: 0.78rem;
+  color: #4b4b6b;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ===== Progress bar ===== */
+.smells-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.2rem;
+}
+
+.smells-progress-track {
+  flex: 1;
+  height: 5px;
+  background: #f3e8ff;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.smells-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #f9a8d4, #a78bfa);
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+
+.smells-progress-pct {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #7c3aed;
+  white-space: nowrap;
+}
+
+/* ===== Add button ===== */
+.smells-add-btn {
+  margin-top: 0.3rem;
+  width: 100%;
+  padding: 0.55rem;
+  border-radius: 10px;
+  border: 2px solid #a78bfa;
+  background: transparent;
+  color: #7c3aed;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+}
+
+.smells-add-btn:hover {
+  background: #f3e8ff;
+  transform: scale(1.02);
+}
+
+.smells-add-btn.is-added {
+  background: #a78bfa;
+  color: #fff;
+  border-color: #a78bfa;
+}
+
+/* ===== Checkout bar ===== */
+.smells-checkout-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  padding-bottom: max(0.85rem, env(safe-area-inset-bottom));
+  background: linear-gradient(135deg, #f9a8d4 0%, #a78bfa 100%);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.smells-checkout-btn {
+  background: #fff;
+  color: #7c3aed;
+  padding: 0.45rem 1rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.smells-checkout-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.3);
+}
