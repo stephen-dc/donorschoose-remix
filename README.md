@@ -10,6 +10,17 @@ Alternate frontends for [DonorsChoose](https://www.donorschoose.org/) — a coll
 
 You don't need to know how to code. All you need is [Claude Code](https://claude.ai/code) open in this project.
 
+**Getting set up (first time only)**
+
+1. Install Claude Code if you haven't: [claude.ai/code](https://claude.ai/code)
+2. Clone this repo to your computer — in Claude Code, press **Enter** to start a new conversation and say:
+   > *"Can you clone the DonorsChoose Remix repo from GitHub and open it?"*
+3. Once it's cloned, open a new Claude Code session in that folder. On a Mac, you can drag the folder onto the Claude Code icon, or open Terminal, `cd` into the folder, and type `claude`.
+
+From then on, just open Claude Code in that folder whenever you want to work on it.
+
+---
+
 **Step 1: Describe your idea**
 
 Tell Claude what you want to build in plain English. For example:
