@@ -37,7 +37,6 @@ const APPS = [
     description: '8 classrooms enter. Only one gets funded. Vote in head-to-head matchups until a champion emerges.',
     path: '/bracket',
     gradient: 'linear-gradient(135deg, #f59e0b 0%, #b45309 100%)',
-    archived: true,
   },
   {
     id: 'feed',
