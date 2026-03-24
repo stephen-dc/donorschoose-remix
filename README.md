@@ -25,7 +25,50 @@ Alternate frontends for [DonorsChoose](https://www.donorschoose.org/) — a coll
 
 **Anyone with repo access is welcome to add a new app.** The bar is low — if it's a fun or interesting way to surface DonorsChoose projects, it belongs here.
 
-### Adding a new app
+### Adding a new app with Claude Code
+
+You don't need to know how to code to add a new app. Here's how to do it using [Claude Code](https://claude.ai/code):
+
+**Before you start**, make sure you have:
+- Claude Code installed and running in this project's folder
+- The dev server running (`npm run dev` in your terminal — Claude Code can do this for you)
+
+**Step 1: Describe your idea to Claude**
+
+Just tell Claude what you want to build in plain English. Be as specific or vague as you like — you can always refine it. For example:
+
+> *"I want to add a new app called DC Mood. The user picks an emotion from a list (happy, inspired, nostalgic, etc.) and we show them classroom projects that match that mood. They can add projects to a cart and check out."*
+
+**Step 2: Ask Claude to build it**
+
+Say something like:
+
+> *"Can you build this as a new app in the DonorsChoose Remix project? Follow the checklist in CLAUDE.md for adding a new app."*
+
+Claude will create the component file, add the route, add a card to the home screen, and update the README — all at once.
+
+**Step 3: Preview it**
+
+Open [http://localhost:5173](http://localhost:5173) in your browser. Your new app should appear on the home screen. Click around and tell Claude what to change.
+
+**Step 4: Ship it**
+
+When you're happy with it, ask Claude:
+
+> *"Looks good — can you commit and push this?"*
+
+Vercel will automatically deploy it to production within a minute or two.
+
+---
+
+**Tips:**
+- You can share a screenshot with Claude and say "make it look more like this"
+- If something looks broken, just describe what's wrong — Claude can fix it
+- Don't worry about breaking things. Git tracks every change, so nothing is permanent
+
+---
+
+### Adding a new app (technical reference)
 
 1. Create your app component under `src/components/` (e.g. `MyApp.tsx`)
 2. Add a route in `src/router.tsx`
