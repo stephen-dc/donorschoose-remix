@@ -2,73 +2,52 @@
 
 > Good ideas, bad ideas, and everything in between.
 
-Alternate frontends for [DonorsChoose](https://www.donorschoose.org/) — a collection of weird and fun ways to discover and fund classroom projects. Built with React + TypeScript + Vite, deployed on Vercel.
+Alternate frontends for [DonorsChoose](https://www.donorschoose.org/) — a collection of weird and fun ways to discover and fund classroom projects.
 
 ---
 
-## Apps
+## Adding a new app
 
-| Route | Name | Description |
-|---|---|---|
-| `/swipe` | **DC Swipe** | Browse projects like a dating app. Swipe right to fund, left to skip. |
-| `/roulette` | **DC Roulette** | Spin the wheel and let fate pick a classroom for you. |
-| `/picks` | **DC Picks** | Set a budget, then vote dollar-by-dollar between competing projects. |
-| `/bracket` | **DC Bracket** | 8 classrooms compete in a March Madness-style tournament. The champion gets your full budget. |
-| `/feed` | **DC Feed** | TikTok-style vertical feed. Scroll through classroom projects, heart the ones you love, checkout in seconds. |
-| `/versus` | **DC Versus** | Two classrooms face off. Pick the one you love — the winner stays and a new challenger steps up. |
-| `/quiz` | **DC Quiz** | Take a short adaptive quiz and get matched with a real teacher whose classroom needs your help. |
-| `/smells` | **DC Smells Nice** | Gardens, cooking labs, herb projects — only the fragrant side of DonorsChoose, with auto-assigned scent profiles. |
+You don't need to know how to code. All you need is [Claude Code](https://claude.ai/code) open in this project.
 
----
+**Step 1: Describe your idea**
 
-## Contributing
+Tell Claude what you want to build in plain English. For example:
 
-**Anyone with repo access is welcome to add a new app.** The bar is low — if it's a fun or interesting way to surface DonorsChoose projects, it belongs here.
-
-### Adding a new app with Claude Code
-
-You don't need to know how to code to add a new app. Here's how to do it using [Claude Code](https://claude.ai/code):
-
-**Before you start**, make sure you have:
-- Claude Code installed and running in this project's folder
-- The dev server running (`npm run dev` in your terminal — Claude Code can do this for you)
-
-**Step 1: Describe your idea to Claude**
-
-Just tell Claude what you want to build in plain English. Be as specific or vague as you like — you can always refine it. For example:
-
-> *"I want to add a new app called DC Mood. The user picks an emotion from a list (happy, inspired, nostalgic, etc.) and we show them classroom projects that match that mood. They can add projects to a cart and check out."*
+> *"I want to add a new app called DC Mood. The user picks an emotion — happy, inspired, nostalgic — and we show them classroom projects that match that vibe. They can add favorites and check out."*
 
 **Step 2: Ask Claude to build it**
 
-Say something like:
-
 > *"Can you build this as a new app in the DonorsChoose Remix project? Follow the checklist in CLAUDE.md for adding a new app."*
 
-Claude will create the component file, add the route, add a card to the home screen, and update the README — all at once.
+Claude will handle all the code — the component, the route, the home screen card, everything.
 
-**Step 3: Preview it**
+**Step 3: Review and refine**
 
-Open [http://localhost:5173](http://localhost:5173) in your browser. Your new app should appear on the home screen. Click around and tell Claude what to change.
+Ask Claude to show you what it looks like, or describe changes you want:
+
+> *"Can you show me a preview?"*
+> *"Make the button bigger and change the color to green."*
+> *"Add a back button to the top left."*
 
 **Step 4: Ship it**
 
-When you're happy with it, ask Claude:
-
 > *"Looks good — can you commit and push this?"*
 
-Vercel will automatically deploy it to production within a minute or two.
+That's it. Vercel will deploy it to production automatically within a minute or two.
 
 ---
 
 **Tips:**
-- You can share a screenshot with Claude and say "make it look more like this"
+- You can paste a screenshot into Claude and say "make it look more like this"
 - If something looks broken, just describe what's wrong — Claude can fix it
-- Don't worry about breaking things. Git tracks every change, so nothing is permanent
+- Don't worry about breaking things. Every change is tracked, so nothing is permanent
 
 ---
 
-### Adding a new app (technical reference)
+## Technical reference
+
+### Adding a new app (manual steps)
 
 1. Create your app component under `src/components/` (e.g. `MyApp.tsx`)
 2. Add a route in `src/router.tsx`
