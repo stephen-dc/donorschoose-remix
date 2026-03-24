@@ -1,6 +1,6 @@
 import type { Project } from './types'
 
-const API_KEY = import.meta.env.VITE_DC_API_KEY || 'REDACTED'
+const API_KEY = import.meta.env.VITE_DC_API_KEY
 
 function decodeHtml(str: string): string {
   if (!str) return str
