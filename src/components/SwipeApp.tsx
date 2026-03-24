@@ -82,6 +82,7 @@ export default function SwipeApp() {
           onSearch={handleSearch}
           loading={loading}
           error={error}
+          title="DC Swipe"
           showBudget
           onHome={() => navigate('/')}
         />

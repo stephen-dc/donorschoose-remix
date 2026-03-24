@@ -18,7 +18,7 @@ export default function SearchScreen({
   onSearch,
   loading,
   error,
-  title = 'DC Tinder',
+  title = 'DC Swipe',
   tagline = 'Swipe right to fund a classroom near you',
   emoji = '🍎',
   accentClass,
