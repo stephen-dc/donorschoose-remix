@@ -49,6 +49,15 @@ const APPS = [
     gradient: 'linear-gradient(135deg, #06b6d4 0%, #a3e635 100%)',
   },
   {
+    id: 'progress-bar',
+    emoji: '📊',
+    title: 'Donation progress bar (demo)',
+    tagline: 'Prototype & debugger',
+    description: 'Interactive donation progress bar with milestones — tweak funding, match, and layout in the side panel.',
+    path: '/progress-bar',
+    gradient: 'linear-gradient(135deg, #6366f1 0%, #ec4899 100%)',
+  },
+  {
     id: 'versus',
     emoji: '⚡',
     title: 'DC Versus',

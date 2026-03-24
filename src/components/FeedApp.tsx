@@ -9,6 +9,7 @@ import CartDrawer from './CartDrawer'
 import { buildCartUrl } from '../utils/cartUrl'
 import '../styles/app.css'
 import '../styles/feed.css'
+import '../styles/progress-bar.css'
 
 type Screen = 'search' | 'feed'
 
@@ -89,6 +90,7 @@ export default function FeedApp() {
           cartCount={cart.length}
           cartUrl={buildCartUrl(cart.map(p => ({ proposalId: p.id, amount: amounts[p.id] ?? p.costToComplete })))}
           onToggleCart={handleToggleCart}
+          onDonationSelect={(id, amount) => setAmounts(a => ({ ...a, [id]: amount }))}
           onOpenCart={() => setCartOpen(true)}
           onBack={handleBack}
         />

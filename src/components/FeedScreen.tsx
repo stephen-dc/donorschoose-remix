@@ -10,6 +10,7 @@ interface FeedScreenProps {
   cartCount: number
   cartUrl: string
   onToggleCart: (project: Project) => void
+  onDonationSelect?: (projectId: string, amount: number) => void
   onOpenCart: () => void
   onBack: () => void
 }
@@ -20,6 +21,7 @@ export default function FeedScreen({
   cartCount,
   cartUrl,
   onToggleCart,
+  onDonationSelect,
   onOpenCart,
   onBack,
 }: FeedScreenProps) {
@@ -81,6 +83,7 @@ export default function FeedScreen({
             isInCart={cartIds.has(project.id)}
             onToggleCart={() => onToggleCart(project)}
             onReadEssay={() => setEssayProject(project)}
+            onDonationSelect={onDonationSelect}
           />
         ))}
 
