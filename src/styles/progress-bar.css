@@ -1,0 +1,1136 @@
+/* ── Progress Bar Demo Page ──────────────────────────────────────────── */
+.pb-demo-page {
+  min-height: 100vh;
+  background: #f4f5f7;
+  display: flex;
+  align-items: stretch;
+}
+
+.pb-demo-layout {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ── Debug Panel ────────────────────────────────────────────────────── */
+.pb-debug-panel {
+  width: 300px;
+  flex-shrink: 0;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pb-debug-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.pb-debug-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #8888aa;
+  margin-bottom: 0;
+}
+
+.pb-debug-reset-btn {
+  flex-shrink: 0;
+}
+
+.pb-debug-permalink-input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.62rem;
+  line-height: 1.35;
+  color: #6ec6ff;
+  background: #1a1a2e;
+  border: 1px solid #3a3a5c;
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  margin-top: 0.35rem;
+  margin-bottom: 0.4rem;
+  cursor: text;
+}
+
+.pb-debug-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.pb-debug-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #ccc;
+  margin-bottom: 0.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pb-debug-value {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.78rem;
+  color: #6ec6ff;
+  font-weight: 500;
+}
+
+.pb-debug-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #2d2d4a;
+  outline: none;
+  cursor: pointer;
+}
+
+.pb-debug-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #6ec6ff;
+  border: 2px solid #1a1a2e;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.pb-debug-range::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.pb-debug-range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: #666;
+  margin-top: 0.2rem;
+}
+
+.pb-debug-milestone-hint {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.65rem;
+  color: #8888aa;
+  margin-top: 0.35rem;
+  line-height: 1.4;
+  word-break: break-all;
+}
+
+.pb-debug-presets,
+.pb-debug-device-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+}
+
+.pb-debug-preset-btn {
+  background: #2d2d4a;
+  color: #bbb;
+  border: 1px solid #3a3a5c;
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.pb-debug-preset-btn:hover {
+  background: #3a3a5c;
+  color: #fff;
+}
+
+.pb-debug-preset-btn--active {
+  background: #6ec6ff;
+  color: #1a1a2e;
+  border-color: #6ec6ff;
+}
+
+.pb-debug-divider {
+  border: none;
+  border-top: 1px solid #2d2d4a;
+  margin: 0.75rem 0;
+}
+
+/* Toggle switch */
+.pb-debug-toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.pb-debug-switch {
+  width: 40px;
+  height: 22px;
+  border-radius: 11px;
+  background: #2d2d4a;
+  position: relative;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.pb-debug-switch--on {
+  background: #4ab162;
+}
+
+.pb-debug-switch-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s;
+}
+
+.pb-debug-switch--on .pb-debug-switch-thumb {
+  transform: translateX(18px);
+}
+
+.pb-debug-checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  cursor: pointer;
+  margin-bottom: 0.15rem;
+}
+
+.pb-debug-checkbox {
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.12rem;
+  flex-shrink: 0;
+  accent-color: #6ec6ff;
+  cursor: pointer;
+}
+
+.pb-debug-checkbox-copy {
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: #a8a8c0;
+  font-weight: 500;
+}
+
+/* ── Preview Area ───────────────────────────────────────────────────── */
+.pb-demo-preview {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: #fff;
+}
+
+.pb-demo-container {
+  font-family: 'Sharp Sans';
+  width: 100%;
+  max-width: 980px;
+  transition: max-width 0.3s ease;
+}
+
+.pb-demo-container--mobile {
+  border: 2px solid #d0d0d0;
+  border-radius: 24px;
+  padding: 1rem 0.75rem 1.5rem;
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* Progress bar demo: mobile shell always centers match copy (avoids container vs. base cascade fights) */
+.pb-demo-container--mobile .dc-progress-meta-row .dc-progress-match-callout {
+  text-align: center;
+}
+
+/* Fake phone chrome */
+.pb-demo-mobile-chrome {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.pb-demo-mobile-notch {
+  width: 80px;
+  height: 6px;
+  border-radius: 3px;
+  background: #d0d0d0;
+}
+
+/* Top CTA label — anchored to first milestone (hidden for now) */
+.dc-progress-top-label-anchor {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.dc-progress-top-label {
+  display: none;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--dc-progress-blue);
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+  pointer-events: auto;
+}
+
+.dc-progress-top-label a,
+.dc-progress-top-label strong {
+  color: var(--dc-progress-blue);
+  font-weight: 800;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Bar + input row */
+.dc-progress-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.dc-progress-track-area {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  padding-top: 0.35rem;
+}
+
+.dc-progress-hover-zone {
+  display: block;
+}
+
+/* Celebration (left) + next-milestone copy (right), above the track */
+.dc-progress-meta-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.45rem;
+}
+
+.dc-progress-milestone-celebration {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: left;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--dc-progress-blue-deep);
+  line-height: 1.4;
+  margin-bottom: 0;
+  font-family: 'Sharp Sans', 'Roboto', sans-serif;
+}
+
+.dc-progress-next-milestone {
+  display: inline-block;
+  flex: 0 0 auto;
+  margin-left: auto;
+  color: var(--dc-progress-text);
+  text-align: right;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  font-family: 'Sharp Sans', 'Roboto', sans-serif;
+  cursor: pointer;
+}
+
+.dc-progress-next-milestone strong {
+  font-weight: 800;
+}
+
+/* Duplicate “’til next milestone” for narrow layouts only (shown via container / viewport rules) */
+.dc-progress-next-milestone--mobile-bottom {
+  display: none;
+}
+
+.dc-progress-encouragement {
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 900;
+  color: var(--dc-progress-blue-deep);
+  line-height: 1.35;
+  margin-bottom: 0.5rem;
+  font-family: 'Sharp Sans', 'Roboto', sans-serif;
+}
+
+/* ── Track ──────────────────────────────────────────────────────────── */
+.dc-progress-track {
+  position: relative;
+  height: 20px;
+  background: rgba(var(--dc-progress-blue-rgb), 0.1);
+  border-radius: 100px;
+  cursor: pointer;
+  overflow: visible;
+  z-index: 2;
+  box-shadow: inset 0 0 0 2px rgba(var(--dc-progress-blue-rgb), 0.25);
+}
+
+/* Invisible expanded hit area for easier mouse interaction */
+.dc-progress-track::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  bottom: -12px;
+  left: 0;
+  right: 0;
+}
+
+/* Funded fill */
+.dc-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--dc-progress-blue-strong), var(--dc-progress-blue-strong));
+  border-radius: 100px 0 0 100px;
+  border: 3px solid var(--dc-progress-blue-deep);
+  z-index: 10;
+  pointer-events: none;
+  transition: width 0.3s ease;
+}
+
+/* Highlight shine on the funded fill */
+.dc-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 4px;
+  right: 4px;
+  height: 4px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.25);
+  pointer-events: none;
+}
+
+/* When fully funded, round both sides */
+.dc-progress-fill[style*="100%"] {
+  border-radius: 7px;
+}
+
+/* Hover preview fill */
+.dc-progress-hover-fill {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: rgba(var(--dc-progress-blue-rgb), 0.349);
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 0;
+  transition: width 0.01s linear;
+}
+
+/* ── Milestone Dots ─────────────────────────────────────────────────── */
+.dc-milestone-dot {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--dc-progress-blue);
+  z-index: 3;
+  border-width: 8px;
+  outline: 3px solid var(--dc-progress-surface);
+  pointer-events: none;
+  transition: width 0.2s ease, height 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  
+  &:last-child {
+    outline: 12px solid var(--dc-progress-surface);
+    outline-width: 2px !important;
+  }
+}
+
+/* Last dot: at 100% the center would sit on the track edge; inset so the default dot stays inside the bar */
+.dc-milestone-dot--track-end {
+  left: calc(100% - 11px);
+}
+
+.dc-milestone-dot--reached {
+  background: var(--dc-progress-surface);
+  z-index: 11;
+  outline: none
+}
+
+.dc-milestone-dot--hovered {
+  width: 16px;
+  height: 16px;
+  outline: 10px solid var(--dc-progress-ring);
+
+  &:last-child {
+    outline: 12px solid var(--dc-progress-ring);
+    outline-width: 12px !important;
+  }
+}
+
+/* Milestone tooltip */
+.dc-milestone-tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  color: #222222;
+  font-size: 1.15rem;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+  line-height: 1.4;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.dc-milestone-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #ffffff;
+}
+
+.dc-progress-tooltip-give {
+  color: var(--dc-progress-blue);
+}
+
+/* ── Hover Tooltip ──────────────────────────────────────────────────── */
+.dc-hover-tooltip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  transform: translateX(-50%);
+  background: #ffffff;
+  color: var(--dc-progress-blue);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.4rem 0.65rem;
+  border-radius: 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dc-hover-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #ffffff;
+}
+
+/* ── Below-bar Labels ───────────────────────────────────────────────── */
+.dc-progress-labels {
+  position: relative;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #666;
+  height: 2rem;
+}
+
+.dc-progress-remaining {
+  position: absolute;
+  right: 0;
+  color: var(--dc-progress-text);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.dc-progress-remaining--prominent {
+  font-weight: 800;
+  font-size: 1.3rem;
+  font-family: 'Sharp Sans', sans-serif;
+  color: var(--dc-progress-blue);
+  margin-right: 0;
+}
+
+.dc-progress-remaining--hoverable {
+  cursor: pointer;
+}
+
+/* Keeps below-bar row height when “$X to complete” is hidden (e.g. input covers full gap) */
+.dc-progress-labels-spacer {
+  display: block;
+  width: 100%;
+  min-height: 2rem;
+  flex-shrink: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.dc-progress-complete-for {
+  position: absolute;
+  right: 0;
+  color: var(--dc-progress-text);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  text-align: right;
+  max-width: 100%;
+}
+
+.dc-progress-complete-for--prominent {
+  font-weight: 800;
+  font-size: 1.15rem;
+  font-family: 'Sharp Sans', sans-serif;
+  color: var(--dc-progress-blue);
+}
+
+.dc-progress-complete-for--hoverable {
+  cursor: pointer;
+}
+
+.dc-progress-complete-for__amount {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
+}
+
+/* ── Input Area ─────────────────────────────────────────────────────── */
+.dc-progress-input-area {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.dc-progress-input-wrap {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 2px solid #c8cdd0;
+  border-radius: 8px;
+  padding: 0.5rem 0.65rem;
+  width: 80px;
+  transition: border-color 0.15s;
+}
+
+.dc-progress-input-wrap:focus-within {
+  border-color: var(--dc-progress-blue);
+}
+
+.dc-progress-input-prefix {
+  color: #999;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-right: 2px;
+}
+
+.dc-progress-input {
+  background: none;
+  border: none;
+  outline: none;
+  color: #1a1a2e;
+  font-size: 1rem;
+  font-weight: 700;
+  width: 100%;
+  font-family: inherit;
+}
+
+.dc-progress-input::placeholder {
+  color: #ccc;
+}
+
+.dc-progress-give-btn {
+  background: var(--dc-progress-blue-deep);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 28px;
+  padding: 0.7rem 1.5rem;
+  cursor: pointer;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+
+.dc-progress-give-btn:hover {
+  background: var(--dc-progress-blue-dark);
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(var(--dc-progress-blue-rgb), 0.35);
+}
+
+.dc-progress-give-btn:active {
+  transform: scale(0.98);
+}
+
+/* Mobile / narrow: stack bar, full-width input row, full-width give button.
+   Uses container query on the widget so it works for phone viewports and narrow embeds (e.g. feed). */
+.dc-progress-widget {
+  /* Saturated blue: #3da9f3 darkened 25%; tint RGB unchanged for translucent fills */
+  --dc-progress-blue: #2e7fb6;
+  --dc-progress-blue-rgb: 61, 169, 243;
+  --dc-progress-blue-strong: #2b95e0;
+  --dc-progress-blue-deep: #1a7fc7;
+  --dc-progress-blue-dark: #1569a8;
+  --dc-progress-surface: #e8f4fc;
+  --dc-progress-ring: #9dd4f8;
+  --dc-progress-text: #222222;
+  container-type: inline-size;
+  container-name: dc-progress;
+  width: 100%;
+}
+
+/* Same token names as default; values match prior green progress styling (#01695E family) */
+.dc-progress-widget.dc-progress-widget--fully-funding {
+  --dc-progress-blue: #01695e;
+  --dc-progress-blue-rgb: 1, 105, 94;
+  --dc-progress-blue-strong: #1a9d8f;
+  --dc-progress-blue-deep: #0d5c54;
+  --dc-progress-blue-dark: #074842;
+  --dc-progress-surface: #e5f0ef;
+  --dc-progress-ring: #95c1bd;
+  --dc-progress-text: #222222;
+}
+
+/* Match / doubled donations — purple family from brand #3E00C9 */
+.dc-progress-widget.dc-progress-widget--matched {
+  --dc-progress-blue: #3e00c9;
+  --dc-progress-blue-rgb: 62, 0, 201;
+  --dc-progress-blue-strong: #6d3dd8;
+  --dc-progress-blue-deep: #3200a3;
+  --dc-progress-blue-dark: #280085;
+  --dc-progress-surface: #f2ebf9;
+  --dc-progress-ring: #b9a0ff;
+  --dc-progress-text: #222222;
+}
+
+.dc-progress-meta-row--match-only {
+  justify-content: flex-start;
+}
+
+.dc-progress-match-callout {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(var(--dc-progress-blue-rgb), 0.92);
+  line-height: 1.4;
+  margin-bottom: 0;
+  font-family: 'Sharp Sans', 'Roboto', sans-serif;
+}
+
+/* Desktop / wide widget: left-align callout (narrow layouts use max-width block below) */
+@container dc-progress (min-width: 521px) {
+  .dc-progress-match-callout {
+    text-align: left;
+  }
+
+  /* Unmatched: bottom row only shows “$X to complete”; next-milestone stays in meta row */
+  .dc-progress-labels--unmatched-split .dc-progress-next-milestone--mobile-bottom {
+    display: none !important;
+  }
+
+  .dc-progress-labels--unmatched-split .dc-progress-remaining {
+    position: absolute;
+    right: 0;
+    left: auto;
+    top: 0;
+  }
+}
+
+@container dc-progress (max-width: 520px) {
+  .dc-progress-bar-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+  }
+
+  .dc-progress-meta-row {
+    margin-bottom: 0.35rem;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  .dc-progress-meta-row--match-only {
+    justify-content: center;
+  }
+
+  /* Unmatched: “’til next milestone” moves to bottom row; hide the copy above the bar */
+  .dc-progress-meta-row .dc-progress-next-milestone--meta-desktop {
+    display: none;
+  }
+
+  .dc-progress-widget--unmatched-bottom-row-hidden .dc-progress-meta-row .dc-progress-next-milestone--meta-desktop {
+    display: inline-block;
+  }
+
+  .dc-progress-next-milestone {
+    font-size: 0.82rem;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .dc-progress-encouragement {
+    font-size: 0.82rem;
+    margin-bottom: 0.75rem;
+    text-align: center;
+  }
+
+  .dc-progress-milestone-celebration {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  /* Higher specificity so this beats base + min-width rules when the container is narrow */
+  .dc-progress-meta-row .dc-progress-match-callout {
+    font-size: 0.85rem;
+    text-align: center;
+    margin-bottom: 0.25rem;
+  }
+
+  .dc-progress-track-area {
+    width: 100%;
+  }
+
+  .dc-progress-track {
+    height: 20px;
+  }
+
+  .dc-progress-labels {
+    margin-top: 0.5rem;
+    height: 1rem;
+    min-height: 1rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+    padding-bottom: 0.15rem;
+    text-align: center;
+  }
+
+  .dc-progress-labels-spacer {
+    min-height: 1rem;
+  }
+
+  .dc-progress-labels--unmatched-split .dc-progress-labels-spacer {
+    min-height: 2rem;
+  }
+
+  .dc-progress-remaining {
+    font-size: 0.85rem;
+    margin-right: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .dc-progress-remaining--prominent {
+    font-size: 1.1rem;
+  }
+
+  /* Unmatched: one row under the bar — next milestone (left), to complete (right) */
+  .dc-progress-labels--unmatched-split {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem;
+    height: auto;
+    min-height: 2rem;
+    text-align: initial;
+  }
+
+  .dc-progress-labels--unmatched-split:has(> .dc-progress-remaining:only-child:not(.dc-progress-remaining--prominent)) {
+    justify-content: flex-end;
+  }
+
+  .dc-progress-labels--unmatched-split:has(> .dc-progress-remaining--prominent:only-child) {
+    justify-content: center;
+  }
+
+  .dc-progress-labels--unmatched-split:has(.dc-progress-next-milestone--mobile-bottom):has(.dc-progress-remaining--prominent) {
+    flex-wrap: wrap;
+  }
+
+  .dc-progress-labels--unmatched-split .dc-progress-next-milestone--mobile-bottom {
+    display: inline-block;
+    flex: 1 1 auto;
+    min-width: 0;
+    margin-left: 0;
+    text-align: left;
+    font-size: 0.82rem;
+  }
+
+  .dc-progress-labels--unmatched-split .dc-progress-remaining {
+    position: static;
+    flex: 0 0 auto;
+    margin-left: auto;
+    text-align: right;
+    left: auto;
+    right: auto;
+  }
+
+  .dc-progress-labels--unmatched-split .dc-progress-remaining--prominent {
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .dc-progress-labels--unmatched-split:has(.dc-progress-next-milestone--mobile-bottom) .dc-progress-remaining--prominent {
+    flex: 1 1 100%;
+    margin-top: 0.35rem;
+  }
+
+  .dc-progress-complete-for {
+    font-size: 0.85rem;
+    left: 0;
+    right: 0;
+    margin-top: .25rem;
+    text-align: center;
+  }
+
+  .dc-progress-complete-for--prominent {
+    margin-top: .25rem;
+    font-size: 1rem;
+  }
+
+  .dc-progress-input-area {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.6rem;
+  }
+
+  .dc-progress-input-wrap {
+    width: 100%;
+    max-width: none;
+    padding: 0.55rem 0.75rem;
+    box-sizing: border-box;
+  }
+
+  .dc-progress-input-prefix,
+  .dc-progress-input {
+    font-size: 1.05rem;
+  }
+
+  .dc-progress-give-btn {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem 1rem;
+    font-size: 0.88rem;
+    border-radius: 24px;
+    text-align: center;
+  }
+
+  .dc-milestone-tooltip {
+    font-size: 0.95rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .dc-hover-tooltip {
+    font-size: 0.78rem;
+    padding: 0.35rem 0.55rem;
+  }
+}
+
+/* Viewport fallback + phones (container query above covers narrow embeds on wide screens) */
+@media (max-width: 640px) {
+  .dc-progress-bar-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+  }
+
+  .dc-progress-meta-row {
+    margin-bottom: 0.35rem;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  .dc-progress-meta-row--match-only {
+    justify-content: center;
+  }
+
+  .dc-progress-meta-row .dc-progress-next-milestone--meta-desktop {
+    display: none;
+  }
+
+  .dc-progress-widget--unmatched-bottom-row-hidden .dc-progress-meta-row .dc-progress-next-milestone--meta-desktop {
+    display: inline-block;
+  }
+
+  .dc-progress-next-milestone {
+    font-size: 1rem;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .dc-progress-encouragement {
+    font-size: 1rem;
+    margin-bottom: 0.35rem;
+    text-align: center;
+  }
+
+  .dc-progress-milestone-celebration {
+    font-size: 0.78rem;
+    text-align: center;
+  }
+
+  .dc-progress-meta-row .dc-progress-match-callout {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .dc-progress-track-area {
+    width: 100%;
+  }
+
+  .dc-progress-track {
+    height: 18px;
+  }
+
+  .dc-progress-labels {
+    margin-top: 0.4rem;
+    height: auto;
+    min-height: 2.75rem;
+    padding-bottom: 0.15rem;
+    text-align: center;
+  }
+
+  .dc-progress-labels-spacer {
+    min-height: 2.75rem;
+  }
+
+  .dc-progress-labels--unmatched-split .dc-progress-labels-spacer {
+    min-height: 2rem;
+  }
+
+  .dc-progress-remaining {
+    font-size: 0.78rem;
+    margin-right: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .dc-progress-remaining--prominent {
+    font-size: 1.1rem;
+  }
+
+  /* Unmatched: one row under the bar — next milestone (left), to complete (right) */
+  .dc-progress-labels--unmatched-split {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem;
+    height: auto;
+    min-height: 2rem;
+    text-align: initial;
+  }
+
+  .dc-progress-labels--unmatched-split:has(> .dc-progress-remaining:only-child:not(.dc-progress-remaining--prominent)) {
+    justify-content: flex-end;
+  }
+
+  .dc-progress-labels--unmatched-split:has(> .dc-progress-remaining--prominent:only-child) {
+    justify-content: center;
+  }
+
+  .dc-progress-labels--unmatched-split:has(.dc-progress-next-milestone--mobile-bottom):has(.dc-progress-remaining--prominent) {
+    flex-wrap: wrap;
+  }
+
+  .dc-progress-labels--unmatched-split .dc-progress-next-milestone--mobile-bottom {
+    display: inline-block;
+    flex: 1 1 auto;
+    min-width: 0;
+    margin-left: 0;
+    text-align: left;
+    font-size: 0.82rem;
+  }
+
+  .dc-progress-labels--unmatched-split .dc-progress-remaining {
+    position: static;
+    flex: 0 0 auto;
+    margin-left: auto;
+    text-align: right;
+    left: auto;
+    right: auto;
+  }
+
+  .dc-progress-labels--unmatched-split .dc-progress-remaining--prominent {
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .dc-progress-labels--unmatched-split:has(.dc-progress-next-milestone--mobile-bottom) .dc-progress-remaining--prominent {
+    flex: 1 1 100%;
+    margin-top: 0.35rem;
+  }
+
+  .dc-progress-complete-for {
+    font-size: 0.8rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .dc-progress-complete-for--prominent {
+    font-size: 1rem;
+  }
+
+  .dc-progress-input-area {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.6rem;
+  }
+
+  .dc-progress-input-wrap {
+    width: 100%;
+    max-width: none;
+    padding: 0.55rem 0.75rem;
+    box-sizing: border-box;
+  }
+
+  .dc-progress-input-prefix,
+  .dc-progress-input {
+    font-size: 1.05rem;
+  }
+
+  .dc-progress-give-btn {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem 1rem;
+    font-size: 0.88rem;
+    border-radius: 24px;
+    text-align: center;
+  }
+
+  .dc-milestone-tooltip {
+    font-size: 0.95rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .dc-hover-tooltip {
+    font-size: 0.78rem;
+    padding: 0.35rem 0.55rem;
+  }
+}

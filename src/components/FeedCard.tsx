@@ -1,6 +1,8 @@
 import React, { useState, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { Project } from '../types'
+import { buildMilestones } from '../utils/milestones'
+import DonationProgressBar from './DonationProgressBar'
 
 interface FeedCardProps {
   project: Project
@@ -8,6 +10,7 @@ interface FeedCardProps {
   isInCart: boolean
   onToggleCart: () => void
   onReadEssay: () => void
+  onDonationSelect?: (projectId: string, amount: number) => void
 }
 
 interface HeartParticle {
@@ -18,7 +21,7 @@ interface HeartParticle {
 }
 
 const FeedCard = React.forwardRef<HTMLDivElement, FeedCardProps>(
-  ({ project, isActive, isInCart, onToggleCart, onReadEssay }, ref) => {
+  ({ project, isActive, isInCart, onToggleCart, onReadEssay, onDonationSelect }, ref) => {
     const [hearts, setHearts] = useState<HeartParticle[]>([])
     const heartIdRef = useRef(0)
 
@@ -50,8 +53,6 @@ const FeedCard = React.forwardRef<HTMLDivElement, FeedCardProps>(
     const removeHeart = useCallback((id: number) => {
       setHearts(prev => prev.filter(h => h.id !== id))
     }, [])
-
-    const fundedPct = Math.min(100, Math.round(project.percentFunded))
 
     return (
       <div className="feed-card" ref={ref}>
@@ -120,16 +121,14 @@ const FeedCard = React.forwardRef<HTMLDivElement, FeedCardProps>(
           </p>
           <p className="feed-card-desc">{project.shortDescription}</p>
 
-          {/* Funding progress */}
-          <div className="feed-progress-bar-wrap">
-            <div className="feed-progress-bar-track">
-              <div
-                className="feed-progress-bar-fill"
-                style={{ width: `${fundedPct}%` }}
-              />
-            </div>
-            <span className="feed-progress-pct">{fundedPct}% funded</span>
-          </div>
+          {/* Funding progress — interactive donation bar */}
+          <DonationProgressBar
+            totalPrice={project.totalPrice}
+            fundedAmount={project.totalPrice - project.costToComplete}
+            matchMultiplier={project.matchMultiplier}
+            milestones={buildMilestones(project.totalPrice)}
+            onDonationSelect={amount => onDonationSelect?.(project.id, amount)}
+          />
         </div>
       </div>
     )
