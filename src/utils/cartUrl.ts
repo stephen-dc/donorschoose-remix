@@ -1,6 +1,6 @@
 const BASE =
   import.meta.env.VITE_DC_CART_URL ??
-  'https://jackson-secure.dctest.donorschoose.org/donors/cart-import.html'
+  'https://secure.donorschoose.org/donors/cart-import.html'
 
 export interface CartItem {
   proposalId: string
