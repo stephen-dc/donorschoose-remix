@@ -10,7 +10,7 @@ npx tsc --noEmit     # typecheck only (run before committing)
 
 ## Architecture
 
-Each app is a self-contained route with its own top-level component (`TinderApp`, `RouletteApp`, `PicksApp`, `BracketApp`). Apps manage their own state and compose shared components.
+Each app is a self-contained route with its own top-level component (`SwipeApp`, `RouletteApp`, `PicksApp`, `BracketApp`). Apps manage their own state and compose shared components.
 
 **Shared components:**
 - `SearchScreen` — location + optional budget presets (`showBudget` prop); pass `accentClass="search-screen--{app}"` for per-app color
@@ -22,7 +22,7 @@ Each app is a self-contained route with its own top-level component (`TinderApp`
 - `src/api.ts` → `fetchProjects(params: SearchParams)` — DonorsChoose JSON feed; `SearchParams` includes optional `budget?: number` (UI only, ignored by the API)
 - `src/utils/cartUrl.ts` → `buildCartUrl(items: CartItem[])` — builds the DonorsChoose cart import URL; `amount` is in whole dollars
 
-## Budget pattern (Tinder, Roulette, Bracket)
+## Budget pattern (Swipe, Roulette, Bracket)
 
 ```ts
 const [budget, setBudget] = useState<number | null>(null)

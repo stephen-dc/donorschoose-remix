@@ -3,12 +3,12 @@ import '../styles/home.css'
 
 const APPS = [
   {
-    id: 'tinder',
+    id: 'swipe',
     emoji: '🔥',
-    title: 'DC Tinder',
+    title: 'DC Swipe',
     tagline: 'Swipe right on classrooms',
     description: 'Browse DonorsChoose projects like a dating app. Swipe right to fund, left to skip.',
-    path: '/tinder',
+    path: '/swipe',
     gradient: 'linear-gradient(135deg, #fd267a 0%, #ff6036 100%)',
   },
   {

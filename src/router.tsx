@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomeScreen from './components/HomeScreen'
-import TinderApp from './components/TinderApp'
+import SwipeApp from './components/SwipeApp'
 import RouletteApp from './components/RouletteApp'
 import PicksApp from './components/PicksApp'
 import BracketApp from './components/BracketApp'
@@ -14,7 +14,7 @@ export default function RouterRoot() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomeScreen />} />
-        <Route path="/tinder" element={<TinderApp />} />
+        <Route path="/swipe" element={<SwipeApp />} />
         <Route path="/roulette" element={<RouletteApp />} />
         <Route path="/picks" element={<PicksApp />} />
         <Route path="/bracket" element={<BracketApp />} />

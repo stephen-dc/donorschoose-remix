@@ -11,7 +11,7 @@ import '../styles/app.css'
 
 type Screen = 'search' | 'swipe'
 
-export default function TinderApp() {
+export default function SwipeApp() {
   const navigate = useNavigate()
   const [screen, setScreen] = useState<Screen>('search')
   const [projects, setProjects] = useState<Project[]>([])
