@@ -37,6 +37,7 @@ const APPS = [
     description: '8 classrooms enter. Only one gets funded. Vote in head-to-head matchups until a champion emerges.',
     path: '/bracket',
     gradient: 'linear-gradient(135deg, #f59e0b 0%, #b45309 100%)',
+    archived: true,
   },
   {
     id: 'feed',
@@ -55,6 +56,7 @@ const APPS = [
     description: 'Two classrooms face off. Pick the one you love — the winner stays and a new challenger steps up.',
     path: '/versus',
     gradient: 'linear-gradient(135deg, #f59e0b 0%, #ef4444 100%)',
+    archived: true,
   },
   {
     id: 'quiz',
@@ -73,6 +75,7 @@ const APPS = [
     description: 'Gardens, cooking labs, herb projects — if it smells nice, it\'s in. Browse only the fragrant side of DonorsChoose.',
     path: '/smells',
     gradient: 'linear-gradient(135deg, #f9a8d4 0%, #a78bfa 100%)',
+    archived: true,
   },
 ]
 
@@ -88,7 +91,7 @@ export default function HomeScreen() {
       </header>
 
       <main className="home-grid">
-        {APPS.map(app => (
+        {APPS.filter(app => !app.archived).map(app => (
           <button
             key={app.id}
             className="app-card"
