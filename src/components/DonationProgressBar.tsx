@@ -399,6 +399,7 @@ export default function DonationProgressBar({
     if (parsedDonorInput <= 0) return
     onGiveToClassroom?.(parsedDonorInput)
     onDonationSelect?.(parsedDonorInput)
+    setInputAmount('')
   }, [parsedDonorInput, onGiveToClassroom, onDonationSelect])
 
   const handleInputKeyDown = useCallback(
