@@ -56,6 +56,8 @@ export default function ProgressBarDemo() {
   )
 
   const [permalinkCopied, setPermalinkCopied] = useState(false)
+  const [resetKey, setResetKey] = useState(0)
+  const [debugOpen, setDebugOpen] = useState(false)
 
   /** Browser back/forward and external URL edits */
   useEffect(() => {
@@ -150,6 +152,7 @@ export default function ProgressBarDemo() {
     setAutoMilestoneCountByPrice(d.autoMilestoneCountByPrice)
     setMobileMode(d.mobileMode)
     setMobileWidth(d.mobileWidth)
+    setResetKey(k => k + 1)
   }, [])
 
   const safeFunded = Math.min(fundedAmount, totalPrice)
@@ -162,8 +165,26 @@ export default function ProgressBarDemo() {
   return (
     <div className="pb-demo-page">
       <div className="pb-demo-layout">
+        {/* Mobile toggle button */}
+        <button
+          type="button"
+          className="pb-debug-mobile-toggle"
+          onClick={() => setDebugOpen(o => !o)}
+          aria-label={debugOpen ? 'Close debugger' : 'Open debugger'}
+        >
+          {debugOpen ? '✕' : '⚙'}
+        </button>
+
+        {/* Backdrop for mobile */}
+        {debugOpen && (
+          <div
+            className="pb-debug-backdrop"
+            onClick={() => setDebugOpen(false)}
+          />
+        )}
+
         {/* Debug Panel */}
-        <div className="pb-debug-panel">
+        <div className={`pb-debug-panel ${debugOpen ? 'pb-debug-panel--open' : ''}`}>
           <div className="pb-debug-header">
             <div className="pb-debug-title">Debugger</div>
             <button
@@ -419,6 +440,7 @@ export default function ProgressBarDemo() {
               </div>
             )}
             <DonationProgressBar
+              key={resetKey}
               totalPrice={totalPrice}
               fundedAmount={safeFunded}
               matchMultiplier={matchedEnabled ? matchMultiplier : undefined}
