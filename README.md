@@ -114,6 +114,8 @@ cp .env.example .env
 | `VITE_DC_API_KEY` | DonorsChoose API key | `REDACTED` (public) |
 | `VITE_DC_CART_URL` | Cart import base URL | Production DonorsChoose URL |
 
+> **Never commit secrets.** API keys, passwords, and tokens must only live in your local `.env` file — never in source code or committed files. The `.env` file is already listed in `.gitignore` so git won't track it automatically, but be careful not to copy values into source files or paste them into Claude conversations. If you accidentally commit a secret, treat it as compromised and rotate it immediately.
+
 ---
 
 ## Deployment
