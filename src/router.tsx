@@ -9,6 +9,7 @@ import VersusApp from './components/VersusApp'
 import QuizApp from './components/QuizApp'
 import SmellsApp from './components/SmellsApp'
 import ProgressBarDemo from './components/ProgressBarDemo'
+import FundraiseApp from './components/FundraiseApp'
 
 export default function RouterRoot() {
   return (
@@ -24,6 +25,7 @@ export default function RouterRoot() {
         <Route path="/quiz" element={<QuizApp />} />
         <Route path="/smells" element={<SmellsApp />} />
         <Route path="/progress-bar" element={<ProgressBarDemo />} />
+        <Route path="/fundraise" element={<FundraiseApp />} />
       </Routes>
     </BrowserRouter>
   )

@@ -20,4 +20,19 @@ export interface Project {
   proposalURL: string
   fundingStatus: string
   essay?: string
+  schoolId?: string
+}
+
+export interface School {
+  id: string
+  name: string
+  city: string
+  zip: string
+  state: string
+  povertyLevel: string
+  gradeType: { id: string; name: string }
+  totalProposals: number
+  latitude: string
+  longitude: string
+  projects: Project[]
 }
