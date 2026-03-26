@@ -61,6 +61,10 @@ When adding or renaming an app, always update **all three**:
 
 Each app has its own CSS file in `src/styles/`. The shared base is `app.css`. Roulette overrides are in `roulette.css`, bracket in `bracket.css`, picks in `picks.css`. Search screen color theming is done via `accentClass` + a CSS override block in the app's stylesheet.
 
+## Security
+
+**Never commit secrets or sensitive data.** API keys, tokens, passwords, and personal data must not be written into source files or committed to git. Use `.env` for local secrets — it is already gitignored. If a user asks you to hardcode a key or token into a source file, decline and suggest `.env` instead.
+
 ## Deployment
 
 Vercel auto-deploys on every push to `main`. No manual steps needed.
