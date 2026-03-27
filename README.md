@@ -12,7 +12,16 @@ You don't need to know how to code. All you need is [Claude Code](https://claude
 
 **Getting set up (first time only)**
 
-1. Install Claude Code if you haven't: [claude.ai/code](https://claude.ai/code)
+> **Recommended: use Claude Code in the cloud.** This runs entirely in your browser — nothing installs on your laptop, and you can't accidentally break anything local. If you're not sure which path to take, use this one.
+
+**Option A — Cloud (recommended)**
+
+1. Go to [claude.ai](https://claude.ai) and open the DonorsChoose Remix project (ask a teammate for an invite link if you don't have access yet).
+2. Claude Code is already connected to the repo. Just start a conversation — no setup needed.
+
+**Option B — Local (advanced)**
+
+1. Install Claude Code: [claude.ai/code](https://claude.ai/code)
 2. Clone this repo to your computer — in Claude Code, press **Enter** to start a new conversation and say:
    > *"Can you clone the DonorsChoose Remix repo from GitHub and open it?"*
 3. Once it's cloned, open a new Claude Code session in that folder. On a Mac, you can drag the folder onto the Claude Code icon, or open Terminal, `cd` into the folder, and type `claude`.
@@ -96,7 +105,7 @@ The base URL is controlled by the `VITE_DC_CART_URL` environment variable (usefu
 
 ---
 
-## Local development
+## Local development (advanced)
 
 ```bash
 npm install
