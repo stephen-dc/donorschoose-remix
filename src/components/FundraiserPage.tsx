@@ -189,7 +189,7 @@ export default function FundraiserPage({
       </div>
 
       <div className="fundraiser-donate-bar">
-        <button className="fundraiser-donate-bar__btn" onClick={onOpenDonate}>
+        <button className="fundraiser-donate-bar__btn" onClick={() => onOpenDonate()}>
           Donate now
         </button>
       </div>
