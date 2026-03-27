@@ -12,12 +12,13 @@ You don't need to know how to code. All you need is [Claude Code](https://claude
 
 **Getting set up (first time only)**
 
-> **Recommended: use Claude Code in the cloud.** This runs entirely in your browser — nothing installs on your laptop, and you can't accidentally break anything local. If you're not sure which path to take, use this one.
+> **Recommended: use Claude Code on the web.** This runs entirely in the cloud — nothing installs on your laptop, and you can't accidentally break anything local. If you're not sure which path to take, use this one.
 
 **Option A — Cloud (recommended)**
 
-1. Go to [claude.ai](https://claude.ai) and open the DonorsChoose Remix project (ask a teammate for an invite link if you don't have access yet).
-2. Claude Code is already connected to the repo. Just start a conversation — no setup needed.
+1. Go to [claude.ai/code](https://claude.ai/code) and sign in with a Pro, Max, Team, or Enterprise account.
+2. Connect your GitHub account and install the Claude GitHub App on this repository when prompted.
+3. Select an environment and type your task — Claude will clone the repo, make changes, and let you create a PR, all in the browser.
 
 **Option B — Local (advanced)**
 

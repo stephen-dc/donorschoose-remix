@@ -2,9 +2,9 @@
 
 ## Environment
 
-The preferred way to work on this project is via **claude.ai Projects** (cloud sandbox) — Claude Code runs in the browser with no local installation required, and changes are isolated from the user's laptop. Local development is also supported for advanced users.
+The preferred way to work on this project is via **Claude Code on the web** ([claude.ai/code](https://claude.ai/code)) — Claude Code runs on Anthropic-managed cloud infrastructure with no local installation required, and changes are isolated from the user's laptop. Local development is also supported for advanced users.
 
-When helping someone get set up for the first time, recommend the cloud path (claude.ai Projects) unless they have a specific reason to work locally.
+When helping someone get set up for the first time, recommend the cloud path: go to claude.ai/code, connect GitHub, install the Claude GitHub App on this repo, then submit tasks directly from the browser.
 
 ## Commands
 
