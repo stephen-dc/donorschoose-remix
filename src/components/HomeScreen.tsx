@@ -85,6 +85,15 @@ const APPS = [
     gradient: 'linear-gradient(135deg, #3804c1 0%, #1b0260 100%)',
   },
   {
+    id: 'darts',
+    emoji: '🏹',
+    title: 'DC Darts',
+    tagline: 'Throw a dart, fund a classroom',
+    description: 'Click anywhere on the US map. We\'ll find a classroom near where your dart lands.',
+    path: '/darts',
+    gradient: 'linear-gradient(135deg, #ea580c 0%, #ca8a04 100%)',
+  },
+  {
     id: 'smells',
     emoji: '🌸',
     title: 'DC Smells Nice',
