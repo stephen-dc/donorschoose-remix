@@ -1,5 +1,11 @@
 # DonorsChoose Remix — Claude Context
 
+## Environment
+
+The preferred way to work on this project is via **claude.ai Projects** (cloud sandbox) — Claude Code runs in the browser with no local installation required, and changes are isolated from the user's laptop. Local development is also supported for advanced users.
+
+When helping someone get set up for the first time, recommend the cloud path (claude.ai Projects) unless they have a specific reason to work locally.
+
 ## Commands
 
 ```bash
