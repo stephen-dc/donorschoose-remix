@@ -28,7 +28,6 @@ interface Props {
 const Geos = Geographies as React.ComponentType<{ geography: string; children: (args: { geographies: any[] }) => React.ReactNode }>
 
 export default function DartsMap({ loading, onStateClick }: Props) {
-  const [hoveredState, setHoveredState] = useState<string | null>(null)
   const [clickedState, setClickedState] = useState<string | null>(null)
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -52,7 +51,6 @@ export default function DartsMap({ loading, onStateClick }: Props) {
           {({ geographies }) =>
             geographies.map((geo) => {
               const name: string = geo.properties.name
-              const isHovered = hoveredState === name
               const isClicked = clickedState === name
 
               return (
@@ -60,8 +58,6 @@ export default function DartsMap({ loading, onStateClick }: Props) {
                   key={geo.rsmKey}
                   geography={geo}
                   onClick={() => handleClick(geo)}
-                  onMouseEnter={() => !loading && setHoveredState(name)}
-                  onMouseLeave={() => setHoveredState(null)}
                   style={{
                     default: {
                       fill: isClicked ? '#ea580c' : '#1e293b',
