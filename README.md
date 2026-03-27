@@ -66,6 +66,22 @@ That's it. Vercel will deploy it to production automatically within a minute or 
 
 ---
 
+## Apps
+
+| Emoji | Name | Path | Description |
+|-------|------|------|-------------|
+| 🔥 | DC Swipe | `/swipe` | Tinder-style swiping through classroom projects |
+| 🎰 | DC Roulette | `/roulette` | Spin the wheel and let chance pick a classroom |
+| 🏆 | DC Picks | `/picks` | Budget-based voting between projects |
+| 🏀 | DC Bracket | `/bracket` | Tournament-style elimination to find one winner |
+| 📱 | DC Feed | `/feed` | TikTok-style vertical scroll through projects |
+| 🎯 | DC Quiz | `/quiz` | Personality quiz matched to a real classroom |
+| 🏹 | DC Darts | `/darts` | Throw a dart at the US map, fund the classroom it hits |
+| 📣 | DC Fundraise | `/fundraise` | Create a peer-to-peer fundraising page for a school |
+| 📊 | Progress Bar Demo | `/progress-bar` | Interactive donation progress bar prototype |
+
+---
+
 ## Technical reference
 
 ### Adding a new app (manual steps)
