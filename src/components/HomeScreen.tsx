@@ -76,6 +76,15 @@ const APPS = [
     gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
   },
   {
+    id: 'fundraise',
+    emoji: '📣',
+    title: 'DC Fundraise',
+    tagline: 'Rally your community for a school',
+    description: 'Create a peer-to-peer fundraising page for a school near you. Set a goal, share your story, and watch donations roll in.',
+    path: '/fundraise',
+    gradient: 'linear-gradient(135deg, #3804c1 0%, #1b0260 100%)',
+  },
+  {
     id: 'smells',
     emoji: '🌸',
     title: 'DC Smells Nice',

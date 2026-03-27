@@ -70,6 +70,8 @@ That's it. Vercel will deploy it to production automatically within a minute or 
 
 Projects are fetched from the DonorsChoose JSON feed via `src/api.ts`. The `fetchProjects()` function accepts a `state` (required) and optional `city` and returns an array of `Project` objects (see `src/types.ts` for the full shape).
 
+School data is fetched via `fetchSchool(schoolId)` from the DonorsChoose School Pages API. This is used by DC Fundraise to display school-level stats (poverty level, grade type, total proposals funded).
+
 ---
 
 ## Cart transfer URL
