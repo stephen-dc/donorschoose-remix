@@ -86,6 +86,15 @@ const APPS = [
     gradient: 'linear-gradient(135deg, #f9a8d4 0%, #a78bfa 100%)',
     archived: true,
   },
+  {
+    id: 'ascii-art',
+    emoji: '▦',
+    title: 'ASCII Physics',
+    tagline: 'Drag a block through ascii art',
+    description: 'Anime faces, hearts, stars — all in ASCII. A physics block falls and disrupts the art as you drag it around.',
+    path: '/ascii-art',
+    gradient: 'linear-gradient(135deg, #6c5ce7 0%, #0a0a0f 100%)',
+  },
 ]
 
 export default function HomeScreen() {
