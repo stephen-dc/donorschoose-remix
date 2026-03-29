@@ -56,20 +56,6 @@ That's it. Vercel will deploy it to production automatically within a minute or 
 
 ---
 
-## Apps
-
-| App | Path | Description |
-|---|---|---|
-| DC Swipe | `/swipe` | Browse projects like a dating app |
-| DC Roulette | `/roulette` | Spin the wheel to pick a classroom |
-| DC Picks | `/picks` | Budget-based voting between projects |
-| DC Feed | `/feed` | TikTok-style vertical scroll |
-| DC Quiz | `/quiz` | Personality quiz to match with a teacher |
-| Donation Progress Bar | `/progress-bar` | Interactive progress bar prototype |
-| ASCII Physics | `/ascii-art` | Physics demo with draggable block disrupting ASCII art |
-
----
-
 ## Technical reference
 
 ### Adding a new app (manual steps)
