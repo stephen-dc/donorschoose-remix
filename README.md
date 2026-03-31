@@ -12,7 +12,17 @@ You don't need to know how to code. All you need is [Claude Code](https://claude
 
 **Getting set up (first time only)**
 
-1. Install Claude Code if you haven't: [claude.ai/code](https://claude.ai/code)
+> **Recommended: use Claude Code on the web.** This runs entirely in the cloud — nothing installs on your laptop, and you can't accidentally break anything local. If you're not sure which path to take, use this one.
+
+**Option A — Cloud (recommended)**
+
+1. Go to [claude.ai/code](https://claude.ai/code) and sign in with a Pro, Max, Team, or Enterprise account.
+2. Connect your GitHub account and install the Claude GitHub App on this repository when prompted.
+3. Select an environment and type your task — Claude will clone the repo, make changes, and let you create a PR, all in the browser.
+
+**Option B — Local (advanced)**
+
+1. Install Claude Code: [claude.ai/code](https://claude.ai/code)
 2. Clone this repo to your computer — in Claude Code, press **Enter** to start a new conversation and say:
    > *"Can you clone the DonorsChoose Remix repo from GitHub and open it?"*
 3. Once it's cloned, open a new Claude Code session in that folder. On a Mac, you can drag the folder onto the Claude Code icon, or open Terminal, `cd` into the folder, and type `claude`.
@@ -56,6 +66,22 @@ That's it. Vercel will deploy it to production automatically within a minute or 
 
 ---
 
+## Apps
+
+| Emoji | Name | Path | Description |
+|-------|------|------|-------------|
+| 🔥 | DC Swipe | `/swipe` | Tinder-style swiping through classroom projects |
+| 🎰 | DC Roulette | `/roulette` | Spin the wheel and let chance pick a classroom |
+| 🏆 | DC Picks | `/picks` | Budget-based voting between projects |
+| 🏀 | DC Bracket | `/bracket` | Tournament-style elimination to find one winner |
+| 📱 | DC Feed | `/feed` | TikTok-style vertical scroll through projects |
+| 🎯 | DC Quiz | `/quiz` | Personality quiz matched to a real classroom |
+| 🏹 | DC Darts | `/darts` | Throw a dart at the US map, fund the classroom it hits |
+| 📣 | DC Fundraise | `/fundraise` | Create a peer-to-peer fundraising page for a school |
+| 📊 | Progress Bar Demo | `/progress-bar` | Interactive donation progress bar prototype |
+
+---
+
 ## Technical reference
 
 ### Adding a new app (manual steps)
@@ -69,6 +95,8 @@ That's it. Vercel will deploy it to production automatically within a minute or 
 ### Project data
 
 Projects are fetched from the DonorsChoose JSON feed via `src/api.ts`. The `fetchProjects()` function accepts a `state` (required) and optional `city` and returns an array of `Project` objects (see `src/types.ts` for the full shape).
+
+School data is fetched via `fetchSchool(schoolId)` from the DonorsChoose School Pages API. This is used by DC Fundraise to display school-level stats (poverty level, grade type, total proposals funded).
 
 ---
 
@@ -94,7 +122,7 @@ The base URL is controlled by the `VITE_DC_CART_URL` environment variable (usefu
 
 ---
 
-## Local development
+## Local development (advanced)
 
 ```bash
 npm install
@@ -113,6 +141,8 @@ cp .env.example .env
 |---|---|---|
 | `VITE_DC_API_KEY` | DonorsChoose API key | `REDACTED` (public) |
 | `VITE_DC_CART_URL` | Cart import base URL | Production DonorsChoose URL |
+
+> **Never commit secrets.** API keys, passwords, and tokens must only live in your local `.env` file — never in source code or committed files. The `.env` file is already listed in `.gitignore` so git won't track it automatically, but be careful not to copy values into source files or paste them into Claude conversations. If you accidentally commit a secret, treat it as compromised and rotate it immediately.
 
 ---
 

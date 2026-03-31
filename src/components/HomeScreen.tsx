@@ -37,7 +37,6 @@ const APPS = [
     description: '8 classrooms enter. Only one gets funded. Vote in head-to-head matchups until a champion emerges.',
     path: '/bracket',
     gradient: 'linear-gradient(135deg, #f59e0b 0%, #b45309 100%)',
-    archived: true,
   },
   {
     id: 'feed',
@@ -75,6 +74,24 @@ const APPS = [
     description: 'Take a short, surprisingly fun quiz and get matched with a real teacher whose classroom needs your help.',
     path: '/quiz',
     gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+  },
+  {
+    id: 'fundraise',
+    emoji: '📣',
+    title: 'DC Fundraise',
+    tagline: 'Rally your community for a school',
+    description: 'Create a peer-to-peer fundraising page for a school near you. Set a goal, share your story, and watch donations roll in.',
+    path: '/fundraise',
+    gradient: 'linear-gradient(135deg, #3804c1 0%, #1b0260 100%)',
+  },
+  {
+    id: 'darts',
+    emoji: '🏹',
+    title: 'DC Darts',
+    tagline: 'Throw a dart, fund a classroom',
+    description: 'Click anywhere on the US map. We\'ll find a classroom near where your dart lands.',
+    path: '/darts',
+    gradient: 'linear-gradient(135deg, #ea580c 0%, #ca8a04 100%)',
   },
   {
     id: 'smells',

@@ -1,5 +1,11 @@
 # DonorsChoose Remix — Claude Context
 
+## Environment
+
+The preferred way to work on this project is via **Claude Code on the web** ([claude.ai/code](https://claude.ai/code)) — Claude Code runs on Anthropic-managed cloud infrastructure with no local installation required, and changes are isolated from the user's laptop. Local development is also supported for advanced users.
+
+When helping someone get set up for the first time, recommend the cloud path: go to claude.ai/code, connect GitHub, install the Claude GitHub App on this repo, then submit tasks directly from the browser.
+
 ## Commands
 
 ```bash
@@ -60,6 +66,10 @@ When adding or renaming an app, always update **all three**:
 ## Styles
 
 Each app has its own CSS file in `src/styles/`. The shared base is `app.css`. Roulette overrides are in `roulette.css`, bracket in `bracket.css`, picks in `picks.css`. Search screen color theming is done via `accentClass` + a CSS override block in the app's stylesheet.
+
+## Security
+
+**Never commit secrets or sensitive data.** API keys, tokens, passwords, and personal data must not be written into source files or committed to git. Use `.env` for local secrets — it is already gitignored. If a user asks you to hardcode a key or token into a source file, decline and suggest `.env` instead.
 
 ## Deployment
 

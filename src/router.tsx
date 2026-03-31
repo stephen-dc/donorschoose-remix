@@ -10,6 +10,8 @@ import QuizApp from './components/QuizApp'
 import SmellsApp from './components/SmellsApp'
 import ProgressBarDemo from './components/ProgressBarDemo'
 import AsciiArtDemo from './components/AsciiArtDemo'
+import FundraiseApp from './components/FundraiseApp'
+import DartsApp from './components/DartsApp'
 
 export default function RouterRoot() {
   return (
@@ -26,6 +28,8 @@ export default function RouterRoot() {
         <Route path="/smells" element={<SmellsApp />} />
         <Route path="/progress-bar" element={<ProgressBarDemo />} />
         <Route path="/ascii-art" element={<AsciiArtDemo />} />
+        <Route path="/fundraise" element={<FundraiseApp />} />
+        <Route path="/darts" element={<DartsApp />} />
       </Routes>
     </BrowserRouter>
   )
