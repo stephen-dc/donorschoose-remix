@@ -12,6 +12,12 @@
   min-height: 100vh;
 }
 
+@media (min-width: 901px) {
+  .pb-demo-layout--debugger-hidden .pb-debug-panel {
+    display: none;
+  }
+}
+
 /* ── Debug Panel ────────────────────────────────────────────────────── */
 .pb-debug-panel {
   width: 300px;
@@ -301,16 +307,30 @@
 .pb-demo-preview {
   flex: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 2rem;
   background: #fff;
+}
+
+.pb-demo-preview-toolbar {
+  width: 100%;
+  max-width: 980px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.75rem;
+}
+
+.pb-demo-debugger-toggle-btn {
+  display: inline-flex;
 }
 
 .pb-demo-container {
   font-family: 'Sharp Sans';
   width: 100%;
   max-width: 980px;
+  margin: auto 0;
   transition: max-width 0.3s ease;
 }
 
@@ -380,7 +400,7 @@
   flex: 1;
   min-width: 0;
   position: relative;
-  padding-top: 0.35rem;
+  padding-top: 0px;
 }
 
 .dc-progress-hover-zone {
@@ -391,10 +411,10 @@
 .dc-progress-meta-row {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 0.75rem;
-  margin-bottom: 0.45rem;
+  margin-bottom: 16px;
 }
 
 .dc-progress-milestone-celebration {
@@ -442,8 +462,8 @@
   font-size: 1rem;
   font-weight: 900;
   color: var(--dc-progress-blue-deep);
-  line-height: 1;
-  margin-bottom: 0.45rem;
+  line-height: 1.35;
+  margin-bottom: 1rem;
   font-family: 'Sharp Sans', 'Roboto', sans-serif;
 }
 
@@ -620,7 +640,7 @@
 /* ── Below-bar Labels ───────────────────────────────────────────────── */
 .dc-progress-labels {
   position: relative;
-  margin-top: 0.5rem;
+  margin-top: 16px;
   font-size: 0.8rem;
   color: #666;
   height: 2rem;
@@ -1038,6 +1058,10 @@
 
 /* Viewport fallback + phones (container query above covers narrow embeds on wide screens) */
 @media (max-width: 640px) {
+  .pb-demo-preview-toolbar {
+    display: none;
+  }
+
   .dc-progress-bar-row {
     flex-direction: column;
     align-items: stretch;

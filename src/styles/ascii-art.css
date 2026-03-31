@@ -1,0 +1,60 @@
+.ascii-demo {
+  min-height: 100dvh;
+  background: #0a0a0f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  max-width: 412px;
+  margin: 0 auto;
+}
+
+.ascii-demo-back {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 10;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.ascii-demo-back:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ascii-demo-title {
+  color: #fff;
+  font-family: 'Courier New', monospace;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 14px 0 2px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.ascii-demo-subtitle {
+  color: rgba(255, 255, 255, 0.35);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  margin: 0 0 10px;
+}
+
+.ascii-demo-canvas {
+  width: 100%;
+  max-width: 412px;
+  aspect-ratio: 412 / 820;
+  touch-action: none;
+  cursor: grab;
+  border-radius: 4px;
+}
+
+.ascii-demo-canvas:active {
+  cursor: grabbing;
+}

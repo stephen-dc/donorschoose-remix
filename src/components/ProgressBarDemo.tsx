@@ -25,6 +25,7 @@ const PRESETS = {
 
 export default function ProgressBarDemo() {
   const [searchParams, setSearchParams] = useSearchParams()
+  const [desktopDebuggerHidden, setDesktopDebuggerHidden] = useState(false)
 
   const [totalPrice, setTotalPrice] = useState(
     () => parseProgressBarDemoSearchParams(searchParams).totalPrice
@@ -164,7 +165,9 @@ export default function ProgressBarDemo() {
 
   return (
     <div className="pb-demo-page">
-      <div className="pb-demo-layout">
+      <div
+        className={`pb-demo-layout${desktopDebuggerHidden ? ' pb-demo-layout--debugger-hidden' : ''}`}
+      >
         {/* Mobile toggle button */}
         <button
           type="button"
@@ -182,7 +185,6 @@ export default function ProgressBarDemo() {
             onClick={() => setDebugOpen(false)}
           />
         )}
-
         {/* Debug Panel */}
         <div className={`pb-debug-panel ${debugOpen ? 'pb-debug-panel--open' : ''}`}>
           <div className="pb-debug-header">
@@ -430,6 +432,15 @@ export default function ProgressBarDemo() {
 
         {/* Preview area */}
         <div className="pb-demo-preview">
+          <div className="pb-demo-preview-toolbar">
+            <button
+              type="button"
+              className="pb-debug-preset-btn pb-demo-debugger-toggle-btn"
+              onClick={() => setDesktopDebuggerHidden(prev => !prev)}
+            >
+              {desktopDebuggerHidden ? 'Show debugger' : 'Hide debugger'}
+            </button>
+          </div>
           <div
             className={`pb-demo-container ${mobileMode ? 'pb-demo-container--mobile' : ''}`}
             style={mobileMode ? { maxWidth: mobileWidth } : undefined}
