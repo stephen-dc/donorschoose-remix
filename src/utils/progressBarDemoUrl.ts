@@ -22,7 +22,7 @@ export const PROGRESS_BAR_DEMO_DEFAULTS: ProgressBarDemoUrlState = {
   matchedEnabled: false,
   matchMultiplier: 2,
   milestoneCount: DEFAULT_MILESTONE_COUNT,
-  milestoneFirstPct: 25,
+  milestoneFirstPct: 50,
   autoMilestoneCountByPrice: false,
   mobileMode: false,
   mobileWidth: 375,

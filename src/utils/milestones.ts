@@ -1,5 +1,5 @@
 /** Default used by production callers (e.g. Feed). */
-export const DEFAULT_MILESTONE_COUNT = 4
+export const DEFAULT_MILESTONE_COUNT = 2
 
 export interface Milestone {
   position: number // 0–100 percentage along the bar
@@ -15,14 +15,14 @@ const STEP_LABELS = [
 
 /**
  * Evenly spaced milestones from `firstMilestonePct` through 100%.
- * With default `firstMilestonePct` (25) and `DEFAULT_MILESTONE_COUNT` (4), positions are 25%, 50%, 75%, 100%.
+ * With default `firstMilestonePct` (50) and `DEFAULT_MILESTONE_COUNT` (2), positions are 50%, 100%.
  * With `count === 1`, only a single milestone at 100%.
  * Dollar hints in labels use `totalPrice` for display only. `displayDollarMultiplier`
  * scales those dollar figures (e.g. match campaign) without changing milestone positions.
  */
 export function buildMilestones(
   totalPrice: number,
-  firstMilestonePct = 25,
+  firstMilestonePct = 50,
   count = DEFAULT_MILESTONE_COUNT,
   options?: { displayDollarMultiplier?: number }
 ): Milestone[] {
