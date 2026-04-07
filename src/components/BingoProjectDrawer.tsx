@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import type { Project } from '../types'
 import ProjectImage from './ProjectImage'
+import EssayDrawer from './EssayDrawer'
 
 interface Props {
   project: Project
@@ -15,6 +16,7 @@ const PRESETS = [10, 25, 50]
 export default function BingoProjectDrawer({ project, marked, onMark, onClose }: Props) {
   const [amount, setAmount] = useState(project.costToComplete)
   const [customInput, setCustomInput] = useState('')
+  const [essayOpen, setEssayOpen] = useState(false)
 
   const isComplete = amount === project.costToComplete
   const isCustom = !PRESETS.includes(amount) && !isComplete
@@ -120,6 +122,9 @@ export default function BingoProjectDrawer({ project, marked, onMark, onClose }:
               ? '✓ Remove from Cart'
               : `Add $${amount.toLocaleString()} to Cart ✓`}
           </button>
+          <button className="bingo-dc-link" onClick={() => setEssayOpen(true)}>
+            Read full essay →
+          </button>
           <a
             className="bingo-dc-link"
             href={project.proposalURL}
@@ -130,6 +135,12 @@ export default function BingoProjectDrawer({ project, marked, onMark, onClose }:
           </a>
         </div>
       </motion.div>
+
+      <AnimatePresence>
+        {essayOpen && (
+          <EssayDrawer project={project} onClose={() => setEssayOpen(false)} />
+        )}
+      </AnimatePresence>
     </motion.div>
   )
 }
