@@ -11,7 +11,7 @@ function decodeHtml(str: string): string {
 
 export interface SearchParams {
   city?: string
-  state: string
+  state?: string
   budget?: number
 }
 
@@ -20,8 +20,11 @@ export async function fetchProjects(params: SearchParams): Promise<Project[]> {
     APIKey: API_KEY,
     max: '50',
     showSynopsis: 'true',
-    state: params.state,
   })
+
+  if (params.state) {
+    query.set('state', params.state)
+  }
 
   if (params.city?.trim()) {
     query.set('community', params.city.trim())

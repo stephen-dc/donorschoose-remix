@@ -78,6 +78,7 @@ That's it. Vercel will deploy it to production automatically within a minute or 
 | 🎯 | DC Quiz | `/quiz` | Personality quiz matched to a real classroom |
 | 🏹 | DC Darts | `/darts` | Throw a dart at the US map, fund the classroom it hits |
 | 📣 | DC Fundraise | `/fundraise` | Create a peer-to-peer fundraising page for a school |
+| 🎱 | STEAM Bingo | `/bingo` | Fund classrooms across a 5×5 STEAM Week bingo card |
 | 📊 | Progress Bar Demo | `/progress-bar` | Interactive donation progress bar prototype |
 
 ---
@@ -94,7 +95,7 @@ That's it. Vercel will deploy it to production automatically within a minute or 
 
 ### Project data
 
-Projects are fetched from the DonorsChoose JSON feed via `src/api.ts`. The `fetchProjects()` function accepts a `state` (required) and optional `city` and returns an array of `Project` objects (see `src/types.ts` for the full shape).
+Projects are fetched from the DonorsChoose JSON feed via `src/api.ts`. The `fetchProjects()` function accepts an optional `state`, optional `city`, and optional `budget` and returns an array of `Project` objects (see `src/types.ts` for the full shape). Omitting `state` returns a national feed.
 
 School data is fetched via `fetchSchool(schoolId)` from the DonorsChoose School Pages API. This is used by DC Fundraise to display school-level stats (poverty level, grade type, total proposals funded).
 

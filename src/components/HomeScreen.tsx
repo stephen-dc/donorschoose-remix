@@ -94,6 +94,15 @@ const APPS = [
     gradient: 'linear-gradient(135deg, #ea580c 0%, #ca8a04 100%)',
   },
   {
+    id: 'bingo',
+    emoji: '🎱',
+    title: 'STEAM Bingo',
+    tagline: 'Fund a line, win the week',
+    description: 'A 5×5 bingo card of real classrooms — one for every STEAM subject and every day of the week. Mark squares by adding projects to your cart. Get a row, column, or diagonal for BINGO!',
+    path: '/bingo',
+    gradient: 'linear-gradient(135deg, #10b981 0%, #0891b2 100%)',
+  },
+  {
     id: 'smells',
     emoji: '🌸',
     title: 'DC Smells Nice',
