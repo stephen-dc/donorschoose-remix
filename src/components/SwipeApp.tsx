@@ -39,7 +39,7 @@ export default function SwipeApp() {
       setCart([])
       setAmounts({})
       setBudget(params.budget ?? null)
-      setLocationLabel(params.city ? `${params.city}, ${params.state}` : params.state)
+      setLocationLabel(params.city ? `${params.city}, ${params.state ?? ''}` : (params.state ?? ''))
       setScreen('swipe')
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Failed to fetch projects. Please try again.')
