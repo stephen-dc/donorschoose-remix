@@ -1,0 +1,547 @@
+/* ── STEAM Bingo App ──────────────────────────────────────── */
+
+.bingo-screen {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(160deg, #0f172a 0%, #1e293b 60%, #0f3460 100%);
+  color: #fff;
+}
+
+/* ── Loading / Error ─────────────────────────────────────── */
+
+.bingo-loading,
+.bingo-error {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.bingo-loading-emoji {
+  font-size: 3rem;
+  animation: bingo-spin 1.2s linear infinite;
+}
+
+@keyframes bingo-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.bingo-loading p {
+  opacity: 0.65;
+  font-size: 0.9rem;
+}
+
+.bingo-error-emoji {
+  font-size: 3rem;
+}
+
+.bingo-error h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.bingo-error p {
+  font-size: 0.85rem;
+  opacity: 0.65;
+  margin: 0;
+}
+
+.bingo-retry-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+
+.bingo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem 0.75rem;
+  flex-shrink: 0;
+}
+
+.bingo-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bingo-home-btn {
+  background: rgba(255,255,255,0.1);
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+}
+
+.bingo-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.bingo-cart-btn {
+  position: relative;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50px;
+  color: #fff;
+  font-size: 0.85rem;
+  padding: 0.45rem 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.bingo-cart-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #10b981;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── BINGO toast ─────────────────────────────────────────── */
+
+.bingo-toast {
+  margin: 0 1.25rem 0.5rem;
+  padding: 0.65rem 1rem;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.5px;
+  animation: bingo-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes bingo-pop {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* ── Board ───────────────────────────────────────────────── */
+
+.bingo-board-wrapper {
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: auto;
+  padding: 0 0.75rem 1.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.bingo-board {
+  display: grid;
+  grid-template-columns: 48px repeat(5, 88px);
+  grid-template-rows: 36px repeat(5, 110px);
+  gap: 4px;
+  min-width: 492px;
+}
+
+/* ── Column headers (days) ───────────────────────────────── */
+
+.bingo-col-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.55;
+}
+
+.bingo-col-header-day {
+  font-size: 0.75rem;
+  font-weight: 800;
+  opacity: 1;
+}
+
+/* ── Row headers (subjects) ──────────────────────────────── */
+
+.bingo-row-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border-radius: 8px;
+}
+
+.bingo-row-header-emoji {
+  font-size: 1.1rem;
+}
+
+.bingo-row-header-key {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+/* ── Cell ────────────────────────────────────────────────── */
+
+.bingo-cell {
+  position: relative;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.12s, border-color 0.12s;
+  display: flex;
+  flex-direction: column;
+}
+
+.bingo-cell:hover {
+  transform: scale(1.03);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.bingo-cell--empty {
+  cursor: default;
+  opacity: 0.3;
+}
+
+.bingo-cell--empty:hover {
+  transform: none;
+}
+
+.bingo-cell--bingo-line {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 1px #f59e0b, 0 0 12px rgba(245,158,11,0.35);
+}
+
+.bingo-cell-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.bingo-cell-img-fallback {
+  width: 100%;
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: rgba(255,255,255,0.04);
+}
+
+.bingo-cell-body {
+  padding: 4px 5px 5px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bingo-cell-title {
+  font-size: 0.62rem;
+  font-weight: 600;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.bingo-cell-cost {
+  font-size: 0.58rem;
+  opacity: 0.5;
+  margin-top: auto;
+}
+
+/* ── Marked overlay ──────────────────────────────────────── */
+
+.bingo-cell-marked-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(16, 185, 129, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+/* ── Project Drawer ──────────────────────────────────────── */
+
+.bingo-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+}
+
+.bingo-drawer {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  background: #1e293b;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+  max-height: 90dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.bingo-drawer-handle {
+  width: 40px;
+  height: 4px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
+  margin: 10px auto 0;
+  flex-shrink: 0;
+}
+
+.bingo-drawer-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bingo-drawer-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.bingo-drawer-img-fallback {
+  width: 100%;
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  background: rgba(255,255,255,0.05);
+  flex-shrink: 0;
+}
+
+.bingo-drawer-body {
+  padding: 1rem 1.25rem;
+  overflow-y: auto;
+  flex: 1;
+  color: #fff;
+}
+
+.bingo-drawer-subject {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.6;
+  margin-bottom: 0.35rem;
+}
+
+.bingo-drawer-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 0 0 0.3rem;
+  line-height: 1.3;
+}
+
+.bingo-drawer-meta {
+  font-size: 0.78rem;
+  opacity: 0.55;
+  margin-bottom: 0.85rem;
+}
+
+.bingo-drawer-description {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  opacity: 0.75;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.bingo-drawer-cost {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.bingo-drawer-cost strong {
+  color: #10b981;
+}
+
+.bingo-drawer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 0 1.25rem 1.5rem;
+  flex-shrink: 0;
+}
+
+.bingo-mark-btn {
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.bingo-mark-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 25px rgba(16,185,129,0.4);
+}
+
+.bingo-mark-btn--remove {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.bingo-mark-btn--remove:hover {
+  box-shadow: none;
+  background: rgba(255,255,255,0.12);
+}
+
+/* ── Amount Picker ───────────────────────────────────────── */
+
+.bingo-amount-picker {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.bingo-amount-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.5;
+  margin: 0 0 0.5rem;
+}
+
+.bingo-amount-presets {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.bingo-amount-btn {
+  padding: 0.5rem 0.25rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1.2;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.bingo-amount-btn:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+.bingo-amount-btn--selected {
+  background: rgba(16,185,129,0.25);
+  border-color: #10b981;
+  color: #6ee7b7;
+}
+
+.bingo-amount-btn-sub {
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.bingo-amount-custom {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  padding: 0 0.75rem;
+  transition: border-color 0.12s;
+}
+
+.bingo-amount-custom:focus-within {
+  border-color: rgba(255,255,255,0.3);
+}
+
+.bingo-amount-custom-prefix {
+  font-size: 0.9rem;
+  opacity: 0.5;
+}
+
+.bingo-amount-custom-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 0.88rem;
+  padding: 0.55rem 0;
+}
+
+.bingo-amount-custom-input::placeholder {
+  opacity: 0.35;
+}
+
+.bingo-amount-custom-input--active {
+  color: #6ee7b7;
+}
+
+.bingo-dc-link {
+  display: block;
+  text-align: center;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  padding: 0.3rem;
+}
+
+.bingo-dc-link:hover {
+  color: rgba(255,255,255,0.8);
+}

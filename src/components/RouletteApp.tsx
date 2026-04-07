@@ -36,7 +36,7 @@ export default function RouletteApp() {
       }
       setWheelProjects(results.slice(0, 12))
       setBudget(params.budget ?? null)
-      setLocationLabel(params.city ? `${params.city}, ${params.state}` : params.state)
+      setLocationLabel(params.city ? `${params.city}, ${params.state ?? ''}` : (params.state ?? ''))
       setScreen('wheel')
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Failed to fetch projects. Please try again.')

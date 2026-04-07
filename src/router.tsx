@@ -11,6 +11,7 @@ import SmellsApp from './components/SmellsApp'
 import ProgressBarDemo from './components/ProgressBarDemo'
 import FundraiseApp from './components/FundraiseApp'
 import DartsApp from './components/DartsApp'
+import BingoApp from './components/BingoApp'
 
 export default function RouterRoot() {
   return (
@@ -28,6 +29,7 @@ export default function RouterRoot() {
         <Route path="/progress-bar" element={<ProgressBarDemo />} />
         <Route path="/fundraise" element={<FundraiseApp />} />
         <Route path="/darts" element={<DartsApp />} />
+        <Route path="/bingo" element={<BingoApp />} />
       </Routes>
     </BrowserRouter>
   )
