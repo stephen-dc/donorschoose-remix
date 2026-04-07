@@ -115,7 +115,7 @@ export default function BingoApp() {
     setSelectedCell({ row, col })
   }, [grid])
 
-  const handleMark = useCallback((row: number, col: number) => {
+  const handleMark = useCallback((row: number, col: number, amount: number) => {
     setGrid(prev => {
       const next = prev.map(r => r.map(c => ({ ...c })))
       const cell = next[row][col]
@@ -124,7 +124,7 @@ export default function BingoApp() {
       if (!cell.marked) {
         cell.marked = true
         setCart(c => [...c, cell.project!])
-        setAmounts(a => ({ ...a, [cell.project!.id]: cell.project!.costToComplete }))
+        setAmounts(a => ({ ...a, [cell.project!.id]: amount }))
       } else {
         cell.marked = false
         setCart(c => c.filter(p => p.id !== cell.project!.id))
@@ -202,7 +202,7 @@ export default function BingoApp() {
           <BingoProjectDrawer
             project={selectedProject}
             marked={selectedMarked}
-            onMark={() => handleMark(selectedCell.row, selectedCell.col)}
+            onMark={(amount) => handleMark(selectedCell.row, selectedCell.col, amount)}
             onClose={() => setSelectedCell(null)}
           />
         )}

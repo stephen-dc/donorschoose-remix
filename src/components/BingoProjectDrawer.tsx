@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import type { Project } from '../types'
 import ProjectImage from './ProjectImage'
@@ -5,11 +6,30 @@ import ProjectImage from './ProjectImage'
 interface Props {
   project: Project
   marked: boolean
-  onMark: () => void
+  onMark: (amount: number) => void
   onClose: () => void
 }
 
+const PRESETS = [10, 25, 50]
+
 export default function BingoProjectDrawer({ project, marked, onMark, onClose }: Props) {
+  const [amount, setAmount] = useState(project.costToComplete)
+  const [customInput, setCustomInput] = useState('')
+
+  const isComplete = amount === project.costToComplete
+  const isCustom = !PRESETS.includes(amount) && !isComplete
+
+  function selectPreset(val: number) {
+    setAmount(val)
+    setCustomInput('')
+  }
+
+  function handleCustomChange(val: string) {
+    setCustomInput(val)
+    const n = parseInt(val, 10)
+    if (!isNaN(n) && n > 0) setAmount(n)
+  }
+
   return (
     <motion.div
       className="bingo-drawer-overlay"
@@ -50,14 +70,55 @@ export default function BingoProjectDrawer({ project, marked, onMark, onClose }:
             Needs <strong>${project.costToComplete.toLocaleString()}</strong> to complete
             {project.percentFunded > 0 && ` · ${Math.round(project.percentFunded)}% funded`}
           </p>
+
+          {!marked && (
+            <div className="bingo-amount-picker">
+              <p className="bingo-amount-label">Donation amount</p>
+              <div className="bingo-amount-presets">
+                {PRESETS.map(p => (
+                  <button
+                    key={p}
+                    type="button"
+                    className={`bingo-amount-btn${amount === p && !isComplete ? ' bingo-amount-btn--selected' : ''}`}
+                    onClick={() => selectPreset(p)}
+                  >
+                    ${p}
+                  </button>
+                ))}
+                <button
+                  type="button"
+                  className={`bingo-amount-btn${isComplete ? ' bingo-amount-btn--selected' : ''}`}
+                  onClick={() => selectPreset(project.costToComplete)}
+                >
+                  Complete<br />
+                  <span className="bingo-amount-btn-sub">${project.costToComplete.toLocaleString()}</span>
+                </button>
+              </div>
+              <div className="bingo-amount-custom">
+                <span className="bingo-amount-custom-prefix">$</span>
+                <input
+                  type="number"
+                  className={`bingo-amount-custom-input${isCustom ? ' bingo-amount-custom-input--active' : ''}`}
+                  placeholder="Custom amount"
+                  min={1}
+                  max={project.costToComplete}
+                  value={customInput}
+                  onChange={e => handleCustomChange(e.target.value)}
+                  onFocus={() => setCustomInput(isCustom ? String(amount) : '')}
+                />
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="bingo-drawer-actions">
           <button
             className={`bingo-mark-btn${marked ? ' bingo-mark-btn--remove' : ''}`}
-            onClick={onMark}
+            onClick={() => onMark(amount)}
           >
-            {marked ? '✓ Remove from Cart' : 'Add to Cart + Mark ✓'}
+            {marked
+              ? '✓ Remove from Cart'
+              : `Add $${amount.toLocaleString()} to Cart ✓`}
           </button>
           <a
             className="bingo-dc-link"

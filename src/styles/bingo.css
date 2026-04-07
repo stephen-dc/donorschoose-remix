@@ -442,6 +442,97 @@
   background: rgba(255,255,255,0.12);
 }
 
+/* ── Amount Picker ───────────────────────────────────────── */
+
+.bingo-amount-picker {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.bingo-amount-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.5;
+  margin: 0 0 0.5rem;
+}
+
+.bingo-amount-presets {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.bingo-amount-btn {
+  padding: 0.5rem 0.25rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  line-height: 1.2;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.bingo-amount-btn:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+.bingo-amount-btn--selected {
+  background: rgba(16,185,129,0.25);
+  border-color: #10b981;
+  color: #6ee7b7;
+}
+
+.bingo-amount-btn-sub {
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.bingo-amount-custom {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  padding: 0 0.75rem;
+  transition: border-color 0.12s;
+}
+
+.bingo-amount-custom:focus-within {
+  border-color: rgba(255,255,255,0.3);
+}
+
+.bingo-amount-custom-prefix {
+  font-size: 0.9rem;
+  opacity: 0.5;
+}
+
+.bingo-amount-custom-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 0.88rem;
+  padding: 0.55rem 0;
+}
+
+.bingo-amount-custom-input::placeholder {
+  opacity: 0.35;
+}
+
+.bingo-amount-custom-input--active {
+  color: #6ee7b7;
+}
+
 .bingo-dc-link {
   display: block;
   text-align: center;
