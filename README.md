@@ -80,6 +80,7 @@ That's it. Vercel will deploy it to production automatically within a minute or 
 | 📣 | DC Fundraise | `/fundraise` | Create a peer-to-peer fundraising page for a school |
 | 🎱 | STEAM Bingo | `/bingo` | Fund classrooms across a 5×5 STEAM Week bingo card |
 | 📊 | Progress Bar Demo | `/progress-bar` | Interactive donation progress bar prototype |
+| 🌺 | Hawaii Schools | `/hawaii` | Browse DonorsChoose schools across Hawaii and click through to support them |
 
 ---
 
