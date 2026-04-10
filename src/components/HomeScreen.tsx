@@ -103,6 +103,15 @@ const APPS = [
     gradient: 'linear-gradient(135deg, #10b981 0%, #0891b2 100%)',
   },
   {
+    id: 'hawaii',
+    emoji: '🌺',
+    title: 'Hawaii Schools',
+    tagline: 'Support Hawaiian classrooms',
+    description: 'Browse DonorsChoose projects from schools across Hawaii and click through to support them.',
+    path: '/hawaii',
+    gradient: 'linear-gradient(135deg, #0891b2 0%, #0d9488 100%)',
+  },
+  {
     id: 'smells',
     emoji: '🌸',
     title: 'DC Smells Nice',

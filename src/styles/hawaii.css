@@ -1,0 +1,206 @@
+.hawaii-app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #0f0f1a;
+  color: #fff;
+  overflow-y: auto;
+}
+
+/* ===== Header ===== */
+.hawaii-header {
+  position: relative;
+  background: linear-gradient(135deg, #0891b2 0%, #0d9488 100%);
+  padding: 3rem 1.5rem 2rem;
+  text-align: center;
+}
+
+.hawaii-back {
+  position: absolute;
+  top: max(1rem, env(safe-area-inset-top));
+  left: 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.hawaii-back:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.hawaii-header__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.hawaii-logo {
+  font-size: 2.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.hawaii-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.hawaii-tagline {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  max-width: 320px;
+}
+
+/* ===== Main ===== */
+.hawaii-main {
+  flex: 1;
+  padding: 1.25rem 1rem 2rem;
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ===== Loading ===== */
+.hawaii-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1rem;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.hawaii-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  border-top-color: #06b6d4;
+  border-radius: 50%;
+  animation: hawaii-spin 0.8s linear infinite;
+}
+
+@keyframes hawaii-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== Error ===== */
+.hawaii-error {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #f87171;
+}
+
+/* ===== Search ===== */
+.hawaii-search-wrap {
+  margin-bottom: 0.75rem;
+}
+
+.hawaii-search {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 0.95rem;
+  padding: 0.7rem 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.hawaii-search::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.hawaii-search:focus {
+  border-color: #06b6d4;
+}
+
+/* ===== Count ===== */
+.hawaii-count {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 0.75rem;
+}
+
+/* ===== School list ===== */
+.hawaii-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hawaii-school-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s, border-color 0.15s;
+  cursor: pointer;
+}
+
+.hawaii-school-card:hover {
+  background: rgba(6, 182, 212, 0.12);
+  border-color: rgba(6, 182, 212, 0.35);
+}
+
+.hawaii-school-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.hawaii-school-card__name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hawaii-school-card__location {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 0.15rem;
+}
+
+.hawaii-school-card__right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.hawaii-school-card__badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(6, 182, 212, 0.2);
+  color: #67e8f9;
+  border-radius: 20px;
+  padding: 0.2rem 0.6rem;
+  white-space: nowrap;
+}
+
+.hawaii-school-card__arrow {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== Empty ===== */
+.hawaii-empty {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.4);
+  padding: 2rem 0;
+  font-size: 0.9rem;
+}
