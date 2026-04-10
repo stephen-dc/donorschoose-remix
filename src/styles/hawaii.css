@@ -1,5 +1,5 @@
 .hawaii-app {
-  min-height: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   background: #0f0f1a;
